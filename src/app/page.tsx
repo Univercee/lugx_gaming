@@ -9,6 +9,7 @@ import featureIcon3 from "~/featured-03.png";
 import featureIcon4 from "~/featured-04.png";
 import ProductCard from "@/components/product-card";
 import { games } from '@/lib/placeholderdata';
+import ProductCardMostPlayed from "@/components/product-card-mostplayed";
 export default function Home() {
   return (
     <main className="flex flex-col justify-center items-center">
@@ -50,21 +51,15 @@ export default function Home() {
       </div>
       <div className="container mx-auto px-8 lg:px-24">
         <div className="w-full flex flex-wrap justify-center gap-8 mb-32" style={{marginTop: '-64px'}}>
-          <div className="lg:w-1/5 md:w-1/3">
             <FeatureCard text="free storage" iconSrc={featureIcon1.src}></FeatureCard>
-          </div>
-          <div className="lg:w-1/5 md:w-1/3">
             <FeatureCard text="user more" iconSrc={featureIcon2.src}></FeatureCard>
-          </div>
-          <div className="lg:w-1/5 md:w-1/3">
             <FeatureCard text="reply ready" iconSrc={featureIcon3.src}></FeatureCard>
-          </div>
-          <div className="lg:w-1/5 md:w-1/3">
             <FeatureCard text="easy layout" iconSrc={featureIcon4.src}></FeatureCard>
-          </div>
         </div>
       </div>
-      <div className="section">
+
+      {/* trending */}
+      <div className="container mx-auto px-8 lg:px-24">
         <div className="flex items-center justify-between mb-16">
           <div>
             <p className="text-accent uppercase font-bold mb-4">Trending</p>
@@ -72,19 +67,30 @@ export default function Home() {
           </div>
           <button className="bg-accent hover:bg-primary px-5 py-3 rounded-3xl text-white uppercase text-sm font-semibold">View All</button>
         </div>
-        <div className="flex justify-between gap-5">
-          <div>
+        <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-5">
             <ProductCard data={games[0]}></ProductCard>
-          </div>
-          <div>
             <ProductCard data={games[0]}></ProductCard>
-          </div>
-          <div>
             <ProductCard data={games[0]}></ProductCard>
-          </div>
-          <div>
             <ProductCard data={games[0]}></ProductCard>
+        </div>
+      </div>
+
+      {/* most played */}
+      <div className="bg-slate-100 w-full container mx-auto py-24 px-8 lg:px-24 mt-24" style={{borderRadius: "150px"}}>
+        <div className="flex items-center justify-between mb-16">
+          <div>
+            <p className="text-accent uppercase font-bold mb-4">TOP GAMES</p>
+            <h1 className="capitalize font-bold text-4xl">Most Played</h1>
           </div>
+          <button className="bg-accent hover:bg-primary px-5 py-3 rounded-3xl text-white uppercase text-sm font-semibold">View All</button>
+        </div>
+        <div className="grid lg:grid-cols-6 md:grid-cols-2 lg:gap-3 gap-16">
+          <ProductCardMostPlayed data={games[0]}></ProductCardMostPlayed>
+          <ProductCardMostPlayed data={games[0]}></ProductCardMostPlayed>
+          <ProductCardMostPlayed data={games[0]}></ProductCardMostPlayed>
+          <ProductCardMostPlayed data={games[0]}></ProductCardMostPlayed>
+          <ProductCardMostPlayed data={games[0]}></ProductCardMostPlayed>
+          <ProductCardMostPlayed data={games[0]}></ProductCardMostPlayed>
         </div>
       </div>
     </main>

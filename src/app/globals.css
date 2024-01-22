@@ -102,7 +102,7 @@ body * {
     background-color: var(--color-accent);
 }
 
-.product-card:hover .product-card-icon{
+.product-card:hover .product-card-icon, .product-card:hover .product-card-button{
     @apply bg-primary;
 }
 
