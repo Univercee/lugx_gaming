@@ -5,3 +5,8 @@ export type Game = {
     genres: string[],
     imageSrc: string
 }
+
+export type Category = {
+    name: string,
+    imageSrc: string
+}

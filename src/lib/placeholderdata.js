@@ -8,3 +8,10 @@ export const games = [
         imageSrc: img1.src
     }
 ]
+
+export const categories = [
+    {
+        name: "Action",
+        imageSrc: img1.src
+    }
+]

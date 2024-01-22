@@ -7,12 +7,15 @@ import featureIcon1 from "~/featured-01.png";
 import featureIcon2 from "~/featured-02.png";
 import featureIcon3 from "~/featured-03.png";
 import featureIcon4 from "~/featured-04.png";
+
 import ProductCard from "@/components/product-card";
-import { games } from '@/lib/placeholderdata';
+import { categories, games } from '@/lib/placeholderdata';
 import ProductCardMostPlayed from "@/components/product-card-mostplayed";
+import CategoryCard from "@/components/category-card";
+
 export default function Home() {
   return (
-    <main className="flex flex-col justify-center items-center">
+    <main className="flex flex-col justify-center items-center gap-32 mb-32">
       <div className="main-banner flex flex-col w-full" style={{backgroundImage: `url(${bgImage.src})`, backgroundSize: "100% 100%", borderRadius: "0 0 150px 150px"}}>
        <div className="container mx-auto px-8 lg:px-24 pt-12">
 
@@ -49,8 +52,10 @@ export default function Home() {
         </div>
        </div>
       </div>
-      <div className="container mx-auto px-8 lg:px-24">
-        <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-5 mb-32" style={{marginTop: '-64px'}}>
+
+      {/* features */}
+      <div className="container mx-auto px-8 lg:px-24 mb-32" style={{marginTop: '-12rem'}}>
+        <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-5">
             <FeatureCard text="free storage" iconSrc={featureIcon1.src}></FeatureCard>
             <FeatureCard text="user more" iconSrc={featureIcon2.src}></FeatureCard>
             <FeatureCard text="reply ready" iconSrc={featureIcon3.src}></FeatureCard>
@@ -76,7 +81,7 @@ export default function Home() {
       </div>
 
       {/* most played */}
-      <div className="bg-slate-100 w-full container mx-auto py-24 px-8 lg:px-24 mt-24" style={{borderRadius: "150px"}}>
+      <div className="bg-slate-100 w-full container mx-auto py-24 px-8 lg:px-24" style={{borderRadius: "150px"}}>
         <div className="flex items-center justify-between mb-16">
           <div>
             <p className="text-accent uppercase font-bold mb-4">TOP GAMES</p>
@@ -91,6 +96,23 @@ export default function Home() {
           <ProductCardMostPlayed data={games[0]}></ProductCardMostPlayed>
           <ProductCardMostPlayed data={games[0]}></ProductCardMostPlayed>
           <ProductCardMostPlayed data={games[0]}></ProductCardMostPlayed>
+        </div>
+      </div>
+
+      {/* top categories */}
+      <div className="w-full container mx-auto px-8 lg:px-24">
+        <div className="flex items-center justify-center mb-16">
+          <div className="text-center">
+            <p className="text-accent uppercase font-bold mb-4">Categories</p>
+            <h1 className="capitalize font-bold text-4xl">Top Categories</h1>
+          </div>
+        </div>
+        <div className="grid lg:grid-cols-5 md:grid-cols-2 lg:gap-3 gap-16">
+          <CategoryCard data={categories[0]}></CategoryCard>
+          <CategoryCard data={categories[0]}></CategoryCard>
+          <CategoryCard data={categories[0]}></CategoryCard>
+          <CategoryCard data={categories[0]}></CategoryCard>
+          <CategoryCard data={categories[0]}></CategoryCard>
         </div>
       </div>
     </main>
