@@ -1,16 +1,18 @@
 import Image from "next/image";
 import logo from "~/logo.png";
 import bgImage from "~/banner-bg.jpg";
-import bannerImage from "~/banner-image.jpg"
+import bannerImage from "~/banner-image.jpg";
 import FeatureCard from "@/components/feature-card";
-import featureIcon1 from "~/featured-01.png"
-import featureIcon2 from "~/featured-02.png"
-import featureIcon3 from "~/featured-03.png"
-import featureIcon4 from "~/featured-04.png"
+import featureIcon1 from "~/featured-01.png";
+import featureIcon2 from "~/featured-02.png";
+import featureIcon3 from "~/featured-03.png";
+import featureIcon4 from "~/featured-04.png";
+import ProductCard from "@/components/product-card";
+import { games } from '@/lib/placeholderdata';
 export default function Home() {
   return (
-    <main className="main-banner flex flex-col justify-center items-center">
-      <div className="flex flex-col w-full" style={{backgroundImage: `url(${bgImage.src})`, backgroundSize: "100% 100%", borderRadius: "0 0 150px 150px"}}>
+    <main className="flex flex-col justify-center items-center">
+      <div className="main-banner flex flex-col w-full" style={{backgroundImage: `url(${bgImage.src})`, backgroundSize: "100% 100%", borderRadius: "0 0 150px 150px"}}>
        <div className="container mx-auto px-8 lg:px-24 pt-12">
 
         {/* navigation */}
@@ -39,8 +41,8 @@ export default function Home() {
             </div>
             <div className=" h-full relative max-lg:min-w-72 max-lg:flex max-lg:justify-center">
               <Image className="rounded-3xl" src={bannerImage.src} alt="Banner image"width={400} height={500}></Image>
-              <div className="main-banner-sale">-40%</div>
-              <div className="main-banner-price">$22</div>
+              <div className="banner-sale">-40%</div>
+              <div className="banner-price">$22</div>
             </div>
           </div>
         </div>
@@ -61,7 +63,30 @@ export default function Home() {
             <FeatureCard text="easy layout" iconSrc={featureIcon4.src}></FeatureCard>
           </div>
         </div>
+      </div>
+      <div className="section">
+        <div className="flex items-center justify-between mb-16">
+          <div>
+            <p className="text-accent uppercase font-bold mb-4">Trending</p>
+            <h1 className="capitalize font-bold text-4xl">Trending Games</h1>
+          </div>
+          <button className="bg-accent hover:bg-primary px-5 py-3 rounded-3xl text-white uppercase text-sm font-semibold">View All</button>
         </div>
+        <div className="flex justify-between gap-5">
+          <div>
+            <ProductCard data={games[0]}></ProductCard>
+          </div>
+          <div>
+            <ProductCard data={games[0]}></ProductCard>
+          </div>
+          <div>
+            <ProductCard data={games[0]}></ProductCard>
+          </div>
+          <div>
+            <ProductCard data={games[0]}></ProductCard>
+          </div>
+        </div>
+      </div>
     </main>
   );
 }

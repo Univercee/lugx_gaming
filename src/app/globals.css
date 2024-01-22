@@ -8,6 +8,10 @@
     --color-secondary: #008AF8;
 }
 
+body * {
+    transition: all .3s;
+}
+
 .navbar {
     /* position: absolute;
     top: 40px;
@@ -69,7 +73,7 @@
     right: 0;
 }
 
-.main-banner-sale {
+.banner-sale {
     @apply bg-accent rounded-full text-white font-bold text-center;
     height: 5rem;
     width: 5rem;
@@ -80,7 +84,7 @@
     font-size: 1.3rem;
 }
 
-.main-banner-price{
+.banner-price{
     @apply bg-primary rounded-xl px-3 py-1 text-white font-bold text-center;
     position: absolute;
     top: 5%;
@@ -94,12 +98,16 @@
     
 }
 
-.feature-card div{
-    transition: all .3s;
-}
-
 .feature-card:hover div{
     background-color: var(--color-accent);
+}
+
+.product-card:hover .product-card-icon{
+    @apply bg-primary;
+}
+
+.product-card:hover .product-card-title {
+    @apply text-primary;
 }
 
 
