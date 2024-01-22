@@ -50,7 +50,7 @@ export default function Home() {
        </div>
       </div>
       <div className="container mx-auto px-8 lg:px-24">
-        <div className="w-full flex flex-wrap justify-center gap-8 mb-32" style={{marginTop: '-64px'}}>
+        <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-5 mb-32" style={{marginTop: '-64px'}}>
             <FeatureCard text="free storage" iconSrc={featureIcon1.src}></FeatureCard>
             <FeatureCard text="user more" iconSrc={featureIcon2.src}></FeatureCard>
             <FeatureCard text="reply ready" iconSrc={featureIcon3.src}></FeatureCard>

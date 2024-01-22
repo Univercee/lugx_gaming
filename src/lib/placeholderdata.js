@@ -1,7 +1,7 @@
 import img1 from "../../public/trending-01.jpg"
 export const games = [
     {
-        name: "Assasin Creed",
+        name: "Assasins Creed",
         price: 20,
         sale: null,
         genres: ["Action"],
