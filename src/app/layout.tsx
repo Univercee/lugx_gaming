@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import Footer from "@/layout/footer";
 
@@ -23,6 +23,7 @@ export default function RootLayout({
         {children}
         <Footer></Footer>
       </body>
+      <GoogleAnalytics gaId="G-5W9M0VHPVV"></GoogleAnalytics>
     </html>
   );
 }
