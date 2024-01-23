@@ -21,7 +21,7 @@ export default function Home() {
 
         {/* navigation */}
         <nav className="navbar w-full flex justify-between items-center">
-          <Image src={logo.src} width={160} height={60} alt="Logo"></Image>
+          <Image unoptimized src={logo.src} width={160} height={60} alt="Logo"></Image>
           <ul className="flex gap-8">
             <a href="#"><li className="nav-link active">Home</li></a>
             <a href="#"><li className="nav-link">Our shop</li></a>
@@ -44,7 +44,7 @@ export default function Home() {
               </div>
             </div>
             <div className=" h-full relative max-lg:min-w-72 max-lg:flex max-lg:justify-center">
-              <Image className="rounded-3xl" src={bannerImage.src} alt="Banner image"width={400} height={500}></Image>
+              <Image unoptimized className="rounded-3xl" src={bannerImage.src} alt="Banner image"width={400} height={500}></Image>
               <div className="banner-sale">-40%</div>
               <div className="banner-price">$22</div>
             </div>
