@@ -1,7 +1,7 @@
-export default function Home({id}: {id: string}) {
+export default function Home({ params }: { params: { id: string } }) {
   return (
     <main>
-      <p>Game {id} page</p>
+      <p>Game {params.id} page</p>
     </main>
   );
 }
