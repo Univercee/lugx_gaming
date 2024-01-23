@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+
 import "./globals.css";
 import Footer from "@/layout/footer";
 
@@ -17,6 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <meta name="google-site-verification" content="32SvNvVJunH5bGvezW8GU16IM6lm5qdsW8KoC41hALU" />
       <body className={poppins.className}>
         {children}
         <Footer></Footer>
