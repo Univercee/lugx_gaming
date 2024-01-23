@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function ProductCard({data}: {data: Game}) {
     return (
-      <div className="product-card bg-slate-100 rounded-3xl relative cursor-pointer">
+      <div className="product-card bg-muted rounded-3xl relative cursor-pointer">
         <img src={data.imageSrc} alt="Game image" className="rounded-3xl w-full" />
         <p className="banner-price">{data.price}$</p>
         <div className="flex justify-between items-center p-8">

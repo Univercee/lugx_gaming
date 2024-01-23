@@ -81,7 +81,7 @@ export default function Home() {
       </div>
 
       {/* most played */}
-      <div className="bg-slate-100 w-full container mx-auto py-24 px-8 lg:px-24" style={{borderRadius: "150px"}}>
+      <div className="bg-muted w-full container mx-auto py-24 px-8 lg:px-24" style={{borderRadius: "150px"}}>
         <div className="flex items-center justify-between mb-16">
           <div>
             <p className="text-accent uppercase font-bold mb-4">TOP GAMES</p>
@@ -113,6 +113,30 @@ export default function Home() {
           <CategoryCard data={categories[0]}></CategoryCard>
           <CategoryCard data={categories[0]}></CategoryCard>
           <CategoryCard data={categories[0]}></CategoryCard>
+        </div>
+      </div>
+
+      {/* info */}
+      <div className="w-full container mx-auto px-8 lg:px-24 relative info mt-0 lg:mt-20">
+        <div className="flex flex-col lg:flex-row justify-between items-end gap-16 lg:gap-32">
+          <div className="bg-muted p-16 rounded-3xl flex flex-col gap-16">
+            <div>
+              <p className="text-accent uppercase font-bold mb-4">Our shop</p>
+              <h2 className="text-4xl font-bold">Go Pre-Order Buy & Get Best <span className="text-primary">Prices</span> For You!</h2>
+            </div>
+            <p className="font-medium">Lorem ipsum dolor consectetur adipiscing, sed do eiusmod tempor incididunt.</p>
+            <button className="w-max bg-accent hover:bg-primary px-5 py-3 rounded-3xl text-white uppercase text-sm font-semibold">Shop now</button>
+          </div>
+          <div className="bg-muted p-16 rounded-3xl flex flex-col gap-16 h-full">
+           <div>
+            <p className="text-accent uppercase font-bold mb-4">NEWSLETTER</p>
+            <h2 className="text-4xl font-bold">Get Up To $100 Off Just Buy <span className="text-primary">Subscribe</span> Newsletter!</h2>
+           </div>
+            <div className="search flex max-lg:justify-center w-full">
+              <input className="text-black w-full" type="text" placeholder="Your email..." />
+              <button className="bg-accent hover:bg-primary text-white uppercase font-bold">Search now</button>
+            </div>
+          </div>
         </div>
       </div>
     </main>
