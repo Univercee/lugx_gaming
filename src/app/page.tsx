@@ -1,5 +1,5 @@
 import Image from "next/image";
-import logo from "~/logo.png";
+
 import bgImage from "~/banner-bg.jpg";
 import bannerImage from "~/banner-image.jpg";
 import FeatureCard from "@/components/feature-card";
@@ -18,18 +18,6 @@ export default function Home() {
     <main className="flex flex-col justify-center items-center gap-32 mb-32">
       <div className="main-banner flex flex-col w-full" style={{backgroundImage: `url(${bgImage.src})`, backgroundSize: "100% 100%", borderRadius: "0 0 150px 150px"}}>
        <div className="container mx-auto px-8 lg:px-24 pt-12">
-
-        {/* navigation */}
-        <nav className="navbar w-full flex justify-between items-center">
-          <Image unoptimized src={logo.src} width={160} height={60} alt="Logo"></Image>
-          <ul className="flex gap-8">
-            <a href="#"><li className="nav-link active">Home</li></a>
-            <a href="#"><li className="nav-link">Our shop</li></a>
-            <a href="#"><li className="nav-link">Product details</li></a>
-            <a href="#"><li className="nav-link">Contact us</li></a>
-            <a href="#"><li className="nav-link disabled bg-accent font-medium">Sign in</li></a>
-          </ul>
-        </nav>
 
         {/* banner */}
         <div className="text-white flex flex-col justify-center items-center my-32">

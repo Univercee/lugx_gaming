@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import Footer from "@/layout/footer";
+import Header from "@/layout/header";
 
 const poppins = Poppins({ subsets: ["latin"], weight:['700', '500', '400'] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={poppins.className}>
+        <Header></Header>
         {children}
         <Footer></Footer>
       </body>
