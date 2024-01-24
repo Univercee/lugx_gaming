@@ -8,7 +8,7 @@ export default function ProductCardMostPlayed({data}: {data: Game}) {
             <p className="text-slate-500">{data.genres}</p>
             <p className="product-card-title font-semibold text-lg">{data.name}</p>
         </div>
-        <button className="product-card-button uppercase bg-accent text-white font-semibold px-5 py-3 rounded-3xl absolute" style={{bottom: "-25px"}}>Explore</button>
+        <button className="product-card-button button-accented absolute" style={{bottom: "-25px"}}>Explore</button>
       </div>
     );
 }

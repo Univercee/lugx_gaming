@@ -6,10 +6,15 @@
     --color-accent: #EE626A;
     --color-primary: #0171F8;
     --color-secondary: #008AF8;
+    --color-muted: #F7F7F7;
 }
 
 body * {
     transition: all .3s;
+}
+
+.wrapper {
+    @apply container mx-auto px-8 lg:px-24;
 }
 
 .header {
@@ -146,6 +151,19 @@ body * {
         max-width: 600px;
         max-height: 600px;
     }
+}
+
+.button-accented {
+    @apply bg-accent hover:bg-primary px-5 py-3 rounded-3xl text-white uppercase text-sm font-semibold;
+}
+
+.button-switcher {
+    @apply bg-muted hover:text-accent px-5 py-3 rounded-3xl text-black uppercase text-sm font-semibold cursor-pointer;
+}
+
+.button-switcher.active {
+    background-color: var(--color-accent) !important;
+    color: white !important;
 }
 
 

@@ -10,7 +10,7 @@ export function MainBanner(){
                 <p>LUGX Gaming is free Bootstrap 5 HTML CSS website template for your gaming websites. You can download and use this layout for commercial purposes. Please tell your friends about TemplateMo.</p>
                 <div className="search flex mt-20 max-lg:justify-center w-full">
                     <input className="text-black w-full" type="text" placeholder="Type something" />
-                    <button className="bg-accent hover:bg-primary uppercase font-medium">Search now</button>
+                    <button className="bg-accent hover:bg-primary uppercase font-bold">Search now</button>
                 </div>
             </div>
             <div className=" h-full relative max-lg:min-w-72 max-lg:flex max-lg:justify-center">
