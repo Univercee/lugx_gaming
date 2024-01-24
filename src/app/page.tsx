@@ -118,7 +118,7 @@ export default function Home() {
 
       {/* info */}
       <div className="w-full container mx-auto px-8 lg:px-24 relative info mt-0 lg:mt-20">
-        <div className="flex flex-col lg:flex-row justify-between items-end gap-16 lg:gap-32">
+        <div className="flex flex-col lg:flex-row justify-between max-sm:items-center items-end gap-16 lg:gap-32">
           <div className="bg-muted p-16 rounded-3xl flex flex-col gap-16">
             <div>
               <p className="text-accent uppercase font-bold mb-4">Our shop</p>
@@ -127,7 +127,7 @@ export default function Home() {
             <p className="font-medium">Lorem ipsum dolor consectetur adipiscing, sed do eiusmod tempor incididunt.</p>
             <button className="w-max bg-accent hover:bg-primary px-5 py-3 rounded-3xl text-white uppercase text-sm font-semibold">Shop now</button>
           </div>
-          <div className="bg-muted p-16 rounded-3xl flex flex-col gap-16 h-full">
+          <div className="bg-muted p-16 rounded-3xl flex flex-col gap-16 max-sm:w-full h-full">
            <div>
             <p className="text-accent uppercase font-bold mb-4">NEWSLETTER</p>
             <h2 className="text-4xl font-bold">Get Up To $100 Off Just Buy <span className="text-primary">Subscribe</span> Newsletter!</h2>
