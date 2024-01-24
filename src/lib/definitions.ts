@@ -1,4 +1,5 @@
 export type Game = {
+    id: string,
     name: string,
     price: number,
     sale: number|null,
