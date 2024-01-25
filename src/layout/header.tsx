@@ -9,7 +9,6 @@ import { usePathname } from "next/navigation";
 export default function Header({Banner}: { Banner: JSX.Element }) {
     const pathname = usePathname();
     const headerRef = useRef(null);
-    let [scrolled, setScroleld] = useState(false);
     useEffect(()=>{
       if (headerRef.current) {
         const header = headerRef.current as HTMLDivElement;
@@ -23,11 +22,9 @@ export default function Header({Banner}: { Banner: JSX.Element }) {
     function onScroll(el: HTMLElement){
       if(window.scrollY > el.scrollHeight){
         el.classList.add('header-scrolled');
-        setScroleld(true);
       }
       else{
         el.classList.remove('header-scrolled');
-        setScroleld(false);
       }
     }
 
