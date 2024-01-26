@@ -1,6 +1,7 @@
 export type Game = {
     id: string,
     name: string,
+    description: string,
     price: number,
     sale: number|null,
     genres: string[],
