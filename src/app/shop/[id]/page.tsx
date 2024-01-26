@@ -12,11 +12,7 @@ export function generateStaticParams(){
     { id: "tbxgvunvtq"},
     { id: "gotohyzfmp"},
     { id: "sbacqmqrlp"},
-    { id: "zaltgaxjyz"},
-    { id: "edadyxkwfs"},
-    { id: "qgynpxeytc"},
-    { id: "hwaadvttmh"},
-    { id: "viojboboia"}
+    { id: "zaltgaxjyz"}
   ];
 }
 
