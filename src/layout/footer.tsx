@@ -12,7 +12,7 @@ export default function Footer() {
             <p>Coded by</p>
             <div className="flex gap-4 justify-center">
               <Link href="https://github.com/Univercee"><FontAwesomeIcon icon={faGithub} size="2x"></FontAwesomeIcon></Link>
-              <Link href="linkedin.com/in/aleksandr-ostromogilskii-769315205/"><FontAwesomeIcon icon={faLinkedin} size="2x"></FontAwesomeIcon></Link>
+              <Link href="https://linkedin.com/in/aleksandr-ostromogilskii-769315205/"><FontAwesomeIcon icon={faLinkedin} size="2x"></FontAwesomeIcon></Link>
             </div>
           </div>
         </div>
