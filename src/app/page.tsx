@@ -99,7 +99,7 @@ export default function Home() {
               </div>
                 <div className="search flex max-lg:justify-center w-full">
                   <input className="text-black w-full" type="text" placeholder="Your email..." />
-                  <button className="bg-accent hover:bg-primary text-white uppercase font-bold">Search now</button>
+                  <button className="bg-accent hover:bg-primary text-white uppercase font-bold">Subscribe now</button>
                 </div>
               </div>
             </div>

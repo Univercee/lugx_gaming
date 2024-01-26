@@ -83,8 +83,8 @@ export default function Header({Banner}: { Banner: JSX.Element }) {
             <ul className="nav-list text-nowrap" ref={listRef}>
               <Link href="/" className={`nav-link ${pathname=='/'?'active':''}`}><li>Home</li></Link>
               <Link href="/shop" className={`nav-link ${pathname=='/shop'?'active':''}`}><li>Our shop</li></Link>
-              <Link href="/contacts" className={`nav-link ${pathname=='/contacts'?'active':''}`}><li>Contact us</li></Link>
-              <Link href="#" className="nav-link sign-in"><li>Sign in</li></Link>
+              <Link href="/contacts" className={`nav-link ${pathname=='/contacts'?'active':''}`}><li>Contacts</li></Link>
+              {/* <Link href="#" className="nav-link sign-in"><li>Sign in</li></Link> */}
             </ul>
           </div>
         </nav>

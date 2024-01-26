@@ -18,9 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={poppins.className}>
-        <Suspense>
-            {children}
-        </Suspense>
+        {children}
       </body>
       <GoogleAnalytics gaId="G-5W9M0VHPVV"></GoogleAnalytics>
     </html>

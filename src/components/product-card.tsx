@@ -11,7 +11,7 @@ export default function ProductCard({data}: {data: Game}) {
           <p className="banner-price">{data.price}$</p>
           <div className="flex p-8 mb-5">
               <div className="self-start">
-                  <p className="flex text-slate-500">{data.genres.map((genre)=>(<span>{genre}</span>))}</p>
+                  <p className="flex text-slate-500">{data.genres.map((genre)=>(<span key={genre}>{genre}</span>))}</p>
                   <p className="product-card-title font-semibold text-lg">{data.name}</p>
               </div>
           </div>

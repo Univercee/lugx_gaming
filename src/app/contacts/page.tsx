@@ -34,7 +34,7 @@ export default function Page() {
               </div>
             </div>
             <div>
-              <form action="shop" className="feedback-form gap-4">
+              <form action="" className="feedback-form gap-4">
                 <input name="name" type="text" className="border p-4 rounded-3xl" placeholder="Your name"/>
                 <input name="surname" type="text" className="border p-4 rounded-3xl" placeholder="Your Surname"/>
                 <input name="email" type="text" className="border p-4 rounded-3xl" placeholder="Your E-mail"/>

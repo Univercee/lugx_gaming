@@ -32,21 +32,21 @@ export function Breadcrumbs({ currentPageName }: { currentPageName?: string }){
 
   return (
     <nav aria-label="breadcrumbs">
-      <ol className="flex">
-        <li>
+      <ul className="flex max-md:flex-col max-md:text-center">
+        <li className='max-md:border-b-2 max-md:py-2'>
             <Link href="/">HOME</Link>
         </li>
         {breadcrumbs.map((breadcrumb, i) => {
           return (
-            <li key={breadcrumb.href}>
-                &nbsp;/&nbsp;
+            <li key={breadcrumb.href} className='max-md:border-b-2 last:border-0 max-md:py-2'>
+                <span className="inline-block max-md:invisible max-md:w-0">&nbsp;&gt;&nbsp;</span>
                 <Link href={breadcrumb.href}>
                     {convertBreadcrumb(breadcrumb.breadcrumb)}
                 </Link>
             </li>
           );
         })}
-      </ol>
+      </ul>
     </nav>
   );
 };
