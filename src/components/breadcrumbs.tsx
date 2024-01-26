@@ -4,15 +4,10 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const convertBreadcrumb = (string: string) => {
-  return string
-    .replace(/-/g, ' ')
-    .replace(/oe/g, 'ö')
-    .replace(/ae/g, 'ä')
-    .replace(/ue/g, 'ü')
-    .toUpperCase();
+  return string.toUpperCase();
 };
 
-export function Breadcrumbs(){
+export function Breadcrumbs({ currentPageName }: { currentPageName?: string }){
   const pathname = usePathname();
   const [breadcrumbs, setBreadcrumbs] = useState(new Array());
 
@@ -22,7 +17,9 @@ export function Breadcrumbs(){
       linkPath.shift();
 
       const pathArray = linkPath.map((path, i) => {
-        return { breadcrumb: path, href: '/' + linkPath.slice(0, i + 1).join('/') };
+        let pathname = (currentPageName&&i==linkPath.length-1)?currentPageName:path;
+        
+        return { breadcrumb: pathname, href: '/' + linkPath.slice(0, i + 1).join('/') };
       });
 
       setBreadcrumbs(pathArray);

@@ -1,6 +1,7 @@
 import { BreadcrumbsBanner } from "@/components/breadcrumbs-banner";
 import Footer from "@/layout/footer";
 import Header from "@/layout/header";
+import { games } from "@/lib/placeholderdata";
 
 export function generateStaticParams(){
   return [
@@ -16,16 +17,19 @@ export function generateStaticParams(){
 }
 
 export default function Page({params}: { params: {id: string}}) {
-    return (
-      <div className="min-h-screen flex flex-col">
-        <Header Banner={<BreadcrumbsBanner title={params.id}/>}></Header>
-        <div className="grow">
-          <main className="flex flex-col justify-center items-center gap-32">
-            <p>{params.id} page</p>
-          </main>
-        </div>
-        <Footer></Footer>
+  const game = games.filter((game)=>(
+    game.id == params.id
+  ))[0];
+  return (
+    <div className="min-h-screen flex flex-col">
+      <Header Banner={<BreadcrumbsBanner title={params.id} currentPageName={game.name}/>}></Header>
+      <div className="grow">
+        <main className="flex flex-col justify-center items-center gap-32">
+          <p>{game.name} page</p>
+        </main>
       </div>
-    );
-  }
+      <Footer></Footer>
+    </div>
+  );
+}
   
