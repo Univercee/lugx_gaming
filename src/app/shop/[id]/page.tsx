@@ -28,7 +28,7 @@ export default function Page({params}: { params: {id: string}}) {
       <Header Banner={<BreadcrumbsBanner title={params.id} currentPageName={game.name}/>}></Header>
       <div className="grow">
         <main className="wrapper flex flex-col-reverse md:flex-row justify-center items-center gap-32 my-32">
-          <div>
+          <div className="w-full md:w-1/2">
             <Image unoptimized src={game.imageSrc} alt={game.name} className="rounded-3xl aspect-square object-cover" width={2000} height={2000}></Image>
           </div>
           <div className="flex flex-col gap-8">
@@ -36,7 +36,7 @@ export default function Page({params}: { params: {id: string}}) {
               <h2 className="font-bold text-2xl">{game.name}</h2>
               <div className="text-primary text-3xl font-bold">{`${game.price}$`}</div>
             </div>
-            <p className="text-slate-500">LUGX Gaming Template is based on the latest Bootstrap 5 CSS framework. This template is provided by TemplateMo and it is suitable for your gaming shop ecommerce websites. Feel free to use this for any purpose. Thank you.</p>
+            <p className="text-slate-500">{game.description}</p>
             <div className="flex gap-4">
               <input className="border w-20 rounded-3xl px-3 text-center" placeholder="1" type="number" defaultValue={1}/>
               <button className="button-accented flex items-center justify-center gap-4">
