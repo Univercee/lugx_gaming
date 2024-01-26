@@ -5,8 +5,9 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 const poppins = Poppins({ subsets: ["latin"], weight:['700', '500', '400'] });
 
 export const metadata: Metadata = {
-  title: "LUGX Gaming | Contacts",
-  description: "LUGX gaming contacts page"
+  other: {
+    
+  }
 };
 
 export default function RootLayout({

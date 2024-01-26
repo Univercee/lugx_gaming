@@ -4,6 +4,7 @@ import Header from "@/layout/header";
 import { games } from "@/lib/placeholderdata";
 import { faBagShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -16,10 +17,27 @@ export function generateStaticParams(){
   ];
 }
 
+export async function generateMetadata(
+  { params }: {params: { id: string } },
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+ 
+  // fetch data
+  const product = games.filter((game)=>(
+    game.id == params.id
+  ))[0];
+ 
+  return {
+    title: product.name,
+    description: product.description
+  }
+}
+
 export default function Page({params}: { params: {id: string}}) {
   const game = games.filter((game)=>(
     game.id == params.id
   ))[0];
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header Banner={<BreadcrumbsBanner title={params.id} currentPageName={game.name}/>}></Header>
