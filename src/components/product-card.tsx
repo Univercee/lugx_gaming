@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function ProductCard({data}: {data: Game}) {
     return (
-      <Link href={`/shop/${data.id}`} className="product-card relative bg-muted rounded-3xl cursor-pointer">
+      <Link href={`/shop/${data.id}`} className="animated product-card relative bg-muted rounded-3xl cursor-pointer">
         <div>
           <img src={data.imageSrc} alt="Game image" className="rounded-3xl w-full" />
           <p className="banner-price">{data.price}$</p>
