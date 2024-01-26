@@ -6,7 +6,7 @@ import Footer from "@/layout/footer";
 import Header from "@/layout/header";
 import { MainBanner } from "@/components/main-banner";
 
-const poppins = Poppins({ subsets: ["latin"], weight:['700', '500', '400'] });
+const poppins = Poppins({ subsets: ["latin"], weight:['700', '500', '400', '300'] });
 
 export const metadata: Metadata = {
   title: "LUGX Gaming",

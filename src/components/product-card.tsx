@@ -16,7 +16,7 @@ export default function ProductCard({data}: {data: Game}) {
               </div>
           </div>
           <div className="absolute bottom-5 right-5 bg-accent product-card-icon rounded-full flex items-center justify-center min-w-10 w-10 aspect-square">
-            <FontAwesomeIcon icon={faBagShopping} className="text-white w-1/2 rati" />
+            <FontAwesomeIcon icon={faBagShopping} className="text-white w-1/2 aspect-square" />
           </div>
         </div>
       </Link>
