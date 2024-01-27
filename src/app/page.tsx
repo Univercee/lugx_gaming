@@ -5,14 +5,25 @@ import featureIcon3 from "~/featured-03.png";
 import featureIcon4 from "~/featured-04.png";
 
 import ProductCard from "@/components/product-card";
-import { categories, games } from '@/lib/placeholderdata';
+import { genres, games, tags } from '@/lib/placeholderdata';
 import ProductCardMostPlayed from "@/components/product-card-mostplayed";
-import CategoryCard from "@/components/category-card";
 import Header from "@/layout/header";
 import { MainBanner } from "@/components/main-banner";
 import Footer from "@/layout/footer";
+import GenreCard from "@/components/genre-card";
 
 export default function Home() {
+  
+  const mostPlayed = games.filter((game)=> (
+    game.tags.includes(tags[1])
+  ))
+  const trending = games.filter((game)=> (
+    game.tags.includes(tags[0])
+  ))
+  const topGenres = genres.filter((genre)=> (
+    genre.tags.includes(tags[2])
+  ))
+
   return (
     <div className="min-h-screen flex flex-col gap-10">
       <Header Banner={<MainBanner/>}></Header>
@@ -39,7 +50,7 @@ export default function Home() {
               <button className="button-accented">View All</button>
             </div>
             <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-5">
-                {games.map((el)=>(
+                {trending.map((el)=>(
                   <ProductCard data={el}></ProductCard>
                 ))}
             </div>
@@ -55,12 +66,9 @@ export default function Home() {
               <button className="button-accented">View All</button>
             </div>
             <div className="grid lg:grid-cols-6 md:grid-cols-2 lg:gap-3 gap-16">
-              <ProductCardMostPlayed data={games[0]}></ProductCardMostPlayed>
-              <ProductCardMostPlayed data={games[1]}></ProductCardMostPlayed>
-              <ProductCardMostPlayed data={games[2]}></ProductCardMostPlayed>
-              <ProductCardMostPlayed data={games[3]}></ProductCardMostPlayed>
-              <ProductCardMostPlayed data={games[0]}></ProductCardMostPlayed>
-              <ProductCardMostPlayed data={games[0]}></ProductCardMostPlayed>
+              {mostPlayed.map((el)=>(
+                <ProductCardMostPlayed data={el}></ProductCardMostPlayed>
+              ))}
             </div>
           </div>
 
@@ -73,11 +81,9 @@ export default function Home() {
               </div>
             </div>
             <div className="grid lg:grid-cols-5 md:grid-cols-2 lg:gap-3 gap-16">
-              <CategoryCard data={categories[0]}></CategoryCard>
-              <CategoryCard data={categories[1]}></CategoryCard>
-              <CategoryCard data={categories[2]}></CategoryCard>
-              <CategoryCard data={categories[3]}></CategoryCard>
-              <CategoryCard data={categories[0]}></CategoryCard>
+              {topGenres.map((genre)=>(
+                <GenreCard data={genre}></GenreCard>
+              ))}
             </div>
           </div>
 

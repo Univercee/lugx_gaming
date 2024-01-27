@@ -1,3 +1,4 @@
+'use server'
 import { BreadcrumbsBanner } from "@/components/breadcrumbs-banner";
 import Footer from "@/layout/footer";
 import Header from "@/layout/header";
@@ -8,13 +9,16 @@ import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
-export function generateStaticParams(){
+export async function generateStaticParams(){
   return [
-    { id: "tbxgvunvtq"},
-    { id: "gotohyzfmp"},
-    { id: "sbacqmqrlp"},
-    { id: "zaltgaxjyz"}
-  ];
+    {id: "5b870e87-b128-4f1f-bf70-e26c51b08bf3"},
+    {id: "46ecf095-e261-47fa-9608-a81d39d019ee"},
+    {id: "deabcf92-68b1-40ae-b284-331b8698c10d"},
+    {id: "41a6ada6-6d01-4609-8047-d68dfb3eacd5"},
+    {id: "7437aed6-39b4-4bad-9bbd-cbb66670fe26"},
+    {id: "67c73b70-939e-467b-be95-ec1c53eb47d6"},
+    {id: "4b53f840-b3b8-4e79-b88b-193e50f666b6"}
+  ]
 }
 
 export async function generateMetadata(
@@ -26,14 +30,14 @@ export async function generateMetadata(
   const product = games.filter((game)=>(
     game.id == params.id
   ))[0];
- 
+
   return {
     title: product.name,
     description: product.description
   }
 }
 
-export default function Page({params}: { params: {id: string}}) {
+export default async function Page({params}: { params: {id: string}}) {
   const game = games.filter((game)=>(
     game.id == params.id
   ))[0];
@@ -63,7 +67,7 @@ export default function Page({params}: { params: {id: string}}) {
               <div className="flex gap-8">
                 <p className="text-gray-500">Genres: </p>
                 <p className="text-primary hover:underline">{game.genres.map((genre)=>(
-                  <Link href={{pathname: "/shop", query: {category: genre}}}>{genre}</Link>
+                  <Link href={{pathname: "/shop", query: {genre: genre.name}}}>{genre.name}</Link>
                 ))}</p>
               </div>
             </div>
