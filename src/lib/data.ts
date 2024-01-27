@@ -1,4 +1,4 @@
-'use server'
+''
 import { sql } from "@vercel/postgres";
 import { FilterParams, Game, Genre, Tag } from "./definitions";
 
