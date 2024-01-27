@@ -27,14 +27,6 @@ concurrency:
 jobs:
   # Build job
   build:
-    env:
-      POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
-      POSTGRES_PRISMA_URL: ${{ secrets.POSTGRES_PRISMA_URL }}
-      POSTGRES_URL_NON_POOLING: ${{ secrets.POSTGRES_URL_NON_POOLING }}
-      POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
-      POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
-      POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-      POSTGRES_DATABASE: ${{ secrets.POSTGRES_DATABASE }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
