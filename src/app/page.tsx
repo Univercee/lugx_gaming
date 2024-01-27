@@ -11,6 +11,7 @@ import { MainBanner } from "@/components/main-banner";
 import Footer from "@/layout/footer";
 import GenreCard from "@/components/genre-card";
 import { getFilteredGames, getGenresByTag } from "@/lib/data";
+import Link from "next/link";
 
 export default async function Home() {
   const mostPlayed = await getFilteredGames({genre: null, tag: "Most played"});
@@ -40,7 +41,7 @@ export default async function Home() {
                 <p className="text-accent uppercase font-bold mb-4">Trending</p>
                 <h1 className="capitalize font-bold text-4xl">Trending Games</h1>
               </div>
-              <button className="button-accented">View All</button>
+              <Link className="button-accented" href={{pathname: "shop", query: {tag: "Trending"}}}>View All</Link>
             </div>
             <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-5">
                 {trending.map((el)=>(
@@ -56,7 +57,7 @@ export default async function Home() {
                 <p className="text-accent uppercase font-bold mb-4">TOP GAMES</p>
                 <h1 className="capitalize font-bold text-4xl">Most Played</h1>
               </div>
-              <button className="button-accented">View All</button>
+              <Link className="button-accented" href={{pathname: "shop", query: {tag: "Most played"}}}>View All</Link>
             </div>
             <div className="grid lg:grid-cols-6 md:grid-cols-2 lg:gap-3 gap-16">
               {mostPlayed.map((el)=>(
