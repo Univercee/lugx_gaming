@@ -1,4 +1,4 @@
-''
+'use server'
 import { BreadcrumbsBanner } from "@/components/breadcrumbs-banner";
 import Footer from "@/layout/footer";
 import Header from "@/layout/header";
