@@ -27,6 +27,8 @@ concurrency:
 jobs:
   # Build job
   build:
+    env:
+      FIRE_CREDS: ${{ secrets.FIRE_CREDS }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
