@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "migrate": "node -r dotenv/config --env-file=.env.local ./src/scripts/migration.js"
+    "migrate": "node -r dotenv/config --env-file=.env.local ./src/scripts/migration.js",
+    "seed": "node -r dotenv/config --env-file=.env.local ./src/scripts/seed.mjs"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",

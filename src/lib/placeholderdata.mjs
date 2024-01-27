@@ -1,8 +1,7 @@
-import img1 from "~/trending-01.jpg";
-import type { Game, Genre, Tag } from './definitions'
+// import type { Game, Genre, Tag } from './definitions'
 
 
-export const tags: Tag[] = [
+export const tags = [
     {
         id: "57e61950-e865-4a77-a550-498a95351a89",
         name: "Trending",
@@ -17,59 +16,59 @@ export const tags: Tag[] = [
     }
 ]
 
-export const genres: Genre[] = [
+export const genres = [
     {
         id: "9637fdca-8b4d-454b-9b4d-c2e08916b517",
         name: "Action",
-        imageSrc: img1.src,
+        image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg",
         tags: [tags[2]],
     },
     {
         id: "dd0194f5-e638-48cf-9251-bfa509cbf6ac",
         name: "Adventure",
-        imageSrc: img1.src,
+        image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg",
         tags: [tags[2]],
     },
     {
         id: "783a22d2-f656-430c-9b77-2b48e48bf095",
         name: "Strategy",
-        imageSrc: img1.src,
+        image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg",
         tags: [tags[2]],
     },
     {
         id: "8cc74b69-9f3a-4d41-a5d2-e833a1e08d63",
         name: "Racing",
-        imageSrc: img1.src,
+        image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg",
         tags: [tags[2]],
     },
     {
-        id: "8cc74b69-9f3a-4d41-a5d2-e833a1e08d63",
+        id: "5f5184ba-eae9-4252-8358-b8d4e1ae0d5c",
         name: "Shooter",
-        imageSrc: img1.src,
+        image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg",
         tags: [tags[2]],
     },
     {
-        id: "8cc74b69-9f3a-4d41-a5d2-e833a1e08d63",
+        id: "da1158f5-46c1-41af-b34a-5eb4db3082ae",
         name: "Platform",
-        imageSrc: img1.src,
+        image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg",
         tags: [],
     },
     {
-        id: "8cc74b69-9f3a-4d41-a5d2-e833a1e08d63",
+        id: "4bc4b27b-a7dd-4865-9d4b-cf54364aae86",
         name: "Sport",
-        imageSrc: img1.src,
+        image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg",
         tags: [],
     },
     {
-        id: "8cc74b69-9f3a-4d41-a5d2-e833a1e08d63",
+        id: "d3c5c336-06d0-47f1-8126-cf7a13f00ea7",
         name: "Indie",
-        imageSrc: img1.src,
+        image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg",
         tags: [],
     }
 ]
 
 
-export const games: Game[]  = [
+export const games  = [
     {
         id: "5b870e87-b128-4f1f-bf70-e26c51b08bf3",
         name: "Assassin's Creed II",
@@ -79,8 +78,7 @@ export const games: Game[]  = [
         price: 5.49,
         tags: [tags[2]],
         genres: [genres[0], genres[1]],
-        sale: null,
-        imageSrc: img1.src
+        image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg"
     },
     {
         id: "46ecf095-e261-47fa-9608-a81d39d019ee",
@@ -91,8 +89,7 @@ export const games: Game[]  = [
         genres: [genres[3]],
         price: 7.49,
         tags: [],
-        sale: null,
-        imageSrc: img1.src
+        image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg"
     },
     {
         id: "deabcf92-68b1-40ae-b284-331b8698c10d",
@@ -110,8 +107,7 @@ export const games: Game[]  = [
         genres: [genres[2]],
         price: 8.25,
         tags: [tags[1], tags[2]],
-        sale: null,
-        imageSrc: img1.src
+        image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg"
     },
     {
         id: "41a6ada6-6d01-4609-8047-d68dfb3eacd5",
@@ -122,8 +118,7 @@ export const games: Game[]  = [
         genres: [genres[1], genres[7]],
         price: 8.49,
         tags: [],
-        sale: null,
-        imageSrc: img1.src
+        image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg"
     },
     {
         id: "7437aed6-39b4-4bad-9bbd-cbb66670fe26",
@@ -132,8 +127,7 @@ export const games: Game[]  = [
         genres: [genres[0], genres[1]],
         price: 19.99,
         tags: [tags[0], tags[1], tags[2]],
-        sale: null,
-        imageSrc: img1.src
+        image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg"
     },
     {
         id: "4b53f840-b3b8-4e79-b88b-193e50f666b6",
@@ -143,8 +137,7 @@ export const games: Game[]  = [
         genres: [genres[0], genres[1]],
         price: 7.49,
         tags: [tags[2]],
-        sale: null,
-        imageSrc: img1.src
+        image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg"
     },
     {
         id: "67c73b70-939e-467b-be95-ec1c53eb47d6",
@@ -153,8 +146,7 @@ export const games: Game[]  = [
         genres: [genres[0], genres[4]],
         tags: [tags[0], tags[1], tags[2]],
         price: 15.37,
-        sale: null,
-        imageSrc: img1.src
+        image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg"
     }
 ]
 

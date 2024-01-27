@@ -5,24 +5,17 @@ import featureIcon3 from "~/featured-03.png";
 import featureIcon4 from "~/featured-04.png";
 
 import ProductCard from "@/components/product-card";
-import { genres, games, tags } from '@/lib/placeholderdata';
 import ProductCardMostPlayed from "@/components/product-card-mostplayed";
 import Header from "@/layout/header";
 import { MainBanner } from "@/components/main-banner";
 import Footer from "@/layout/footer";
 import GenreCard from "@/components/genre-card";
+import { getFilteredGames, getGenresByTag } from "@/lib/data";
 
-export default function Home() {
-  
-  const mostPlayed = games.filter((game)=> (
-    game.tags.includes(tags[1])
-  ))
-  const trending = games.filter((game)=> (
-    game.tags.includes(tags[0])
-  ))
-  const topGenres = genres.filter((genre)=> (
-    genre.tags.includes(tags[2])
-  ))
+export default async function Home() {
+  const mostPlayed = await getFilteredGames({genre: null, tag: "Most played"});
+  const trending = await getFilteredGames({genre: null, tag: "Trending"});
+  const topGenres = await getGenresByTag('Top');
 
   return (
     <div className="min-h-screen flex flex-col gap-10">

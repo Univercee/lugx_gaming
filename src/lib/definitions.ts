@@ -3,26 +3,22 @@ export type GameRaw = {
     name: string,
     description: string,
     price: number,
-    sale: number|null,
-    imageSrc: string,
+    image: string,
 }
 
-export type Game = {
-    id: string,
-    name: string,
-    description: string,
-    price: number,
-    sale: number|null,
-    genres: Genre[],
-    imageSrc: string,
-    tags: Tag[]
+export type Game = GameRaw & {
+    genres: string[],
+    tags: string[]
 }
 
-export type Genre = {
+export type GenreRaw = {
     id: string,
     name: string,
-    tags: Tag[]
-    imageSrc: string
+    image: string
+}
+
+export type Genre = GameRaw & {
+    tags: string[]
 }
 
 export type Tag = {
@@ -31,6 +27,6 @@ export type Tag = {
 }
 
 export type FilterParams = {
-    tag: Tag|null,
-    genre: Genre|null
+    tag: string|null,
+    genre: string|null
 }
