@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "LUGX Gaming",
   description: "LUGX gaming home page",
   other: {
-    "google-site-verification": "32SvNvVJunH5bGvezW8GU16IM6lm5qdsW8KoC41hALU"
+    "google-site-verification": "gIZlVp0xapUwGWFGglFBjSVhHwJi8c99KvvMi4OF7g0"
   }
 };
 
@@ -23,7 +23,7 @@ export default function RootLayout({
       <body className={poppins.className}>
         {children}
       </body>
-      <GoogleAnalytics gaId="G-5W9M0VHPVV"></GoogleAnalytics>
+      <GoogleAnalytics gaId="G-9N358EQ6TL"></GoogleAnalytics>
     </html>
   );
 }
