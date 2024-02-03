@@ -1,0 +1,104 @@
+datasource db {
+  provider  = "postgresql"
+  url  	    = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+generator client {
+    provider = "prisma-client-js"
+    previewFeatures = ["relationJoins"]
+}
+
+model User {
+    id String @id @default(uuid())
+    name String?
+    email String? @unique
+    emailVerified DateTime?
+    image String?
+    password String?
+    accounts Account[]
+    games Game[]
+}
+
+model Account {
+  id                 String  @id @default(cuid())
+  userId             String
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String?  @db.Text
+  access_token       String?  @db.Text
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String?  @db.Text
+  session_state      String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+
+model Game {
+    id String @id @default(uuid())
+    name String
+    description String
+    price Int
+    image String
+    isActive Boolean
+    status Status @relation(fields: [statusId], references: [id])
+    statusId String
+    createdBy User @relation(fields: [userId], references: [id])
+    userId String
+    genres GamesOnGenres[]
+    tags GamesOnTags[]
+}
+
+model Status {
+    id String @id @default(uuid())
+    name String @unique
+    games Game[]
+}
+
+model Genre {
+    id String @id @default(uuid())
+    name String @unique
+    image String
+    games GamesOnGenres[]
+    tags GenresOnTags[]
+}
+
+model Tag {
+    id String @id @default(uuid())
+    name String @unique
+    games GamesOnTags[]
+    genres GenresOnTags[]
+}
+
+model GamesOnGenres {
+  game      Game     @relation(fields: [gameId], references: [id])
+  gameId    String 
+  genre     Genre    @relation(fields: [genreId], references: [id])
+  genreId   String
+
+  @@id([gameId, genreId])
+}
+
+model GamesOnTags {
+  game    Game     @relation(fields: [gameId], references: [id])
+  gameId  String
+  tag     Tag      @relation(fields: [tagId], references: [id])
+  tagId   String
+
+  @@id([gameId, tagId])
+}
+
+model GenresOnTags {
+  genre     Genre   @relation(fields: [genreId], references: [id])
+  genreId   String
+  tag       Tag     @relation(fields: [tagId], references: [id])
+  tagId     String
+
+  @@id([genreId, tagId])
+}

@@ -1,5 +1,31 @@
 const { db } = require('@vercel/postgres');
 
+async function migrateUsers(client) {
+  try {
+    await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+
+    const createTable = await client.sql`
+      DROP TABLE IF EXISTS users CASCADE;
+      CREATE TABLE users (
+        id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        email VARCHAR(255) NOT NULL UNIQUE,
+        password VARCHAR(255) NOT NULL,
+        image VARCHAR(255)
+      );
+    `;
+
+    console.log(`Created "users" table`);
+
+    return {
+      createTable,
+    };
+  } catch (error) {
+    console.error('Error migrate users:', error);
+    throw error;
+  }
+}
+
 async function migrateGames(client) {
   try {
     await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
@@ -150,12 +176,13 @@ async function migrateGenresTags(client) {
 async function main() {
   const client = await db.connect();
 
-  await migrateGames(client);
-  await migrateGenres(client);
-  await migrateTags(client);
-  await migrateGamesGenres(client);
-  await migrateGamesTags(client);
-  await migrateGenresTags(client);
+  await migrateUsers(client);
+  // await migrateGames(client);
+  // await migrateGenres(client);
+  // await migrateTags(client);
+  // await migrateGamesGenres(client);
+  // await migrateGamesTags(client);
+  // await migrateGenresTags(client);
 
   await client.end();
 }

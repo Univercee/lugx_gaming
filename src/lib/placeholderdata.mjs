@@ -1,5 +1,28 @@
-// import type { Game, Genre, Tag } from './definitions'
+import bcrypt from 'bcryptjs';
+export const users = [
+    {
+        id: "2349a680-64fc-4d01-9169-b23eee3aecc4",
+        name: "admin",
+        image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg",
+        email: "user@nextmail.com",
+        password: await bcrypt.hash("123456", 10)
+    }
+]
 
+export const statuses = [
+    {
+        id: "9d82adee-2d04-4b70-9364-5004bc08fe72",
+        name: "Approved",
+    },
+    {
+        id: "663f323f-1f87-4119-8a93-680d809ebc9e",
+        name: "Dislined",
+    },
+    {
+        id: "8a4202a7-97bf-4384-93ca-ce5f54ad7511",
+        name: "Pending",
+    }
+]
 
 export const tags = [
     {
@@ -78,7 +101,10 @@ export const games  = [
         price: 5.49,
         tags: [tags[2]],
         genres: [genres[0], genres[1]],
-        image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg"
+        image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg",
+        isActive: true,
+        status: statuses[0],
+        createdBy: users[0]
     },
     {
         id: "46ecf095-e261-47fa-9608-a81d39d019ee",
@@ -89,7 +115,10 @@ export const games  = [
         genres: [genres[3]],
         price: 7.49,
         tags: [],
-        image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg"
+        image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg",
+        isActive: true,
+        status: statuses[0],
+        createdBy: users[0]
     },
     {
         id: "deabcf92-68b1-40ae-b284-331b8698c10d",
@@ -107,7 +136,10 @@ export const games  = [
         genres: [genres[2]],
         price: 8.25,
         tags: [tags[1], tags[2]],
-        image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg"
+        image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg",
+        isActive: true,
+        status: statuses[0],
+        createdBy: users[0]
     },
     {
         id: "41a6ada6-6d01-4609-8047-d68dfb3eacd5",
@@ -118,7 +150,10 @@ export const games  = [
         genres: [genres[1], genres[7]],
         price: 8.49,
         tags: [],
-        image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg"
+        image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg",
+        isActive: true,
+        status: statuses[0],
+        createdBy: users[0]
     },
     {
         id: "7437aed6-39b4-4bad-9bbd-cbb66670fe26",
@@ -127,7 +162,10 @@ export const games  = [
         genres: [genres[0], genres[1]],
         price: 19.99,
         tags: [tags[0], tags[1], tags[2]],
-        image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg"
+        image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg",
+        isActive: true,
+        status: statuses[0],
+        createdBy: users[0]
     },
     {
         id: "4b53f840-b3b8-4e79-b88b-193e50f666b6",
@@ -137,7 +175,10 @@ export const games  = [
         genres: [genres[0], genres[1]],
         price: 7.49,
         tags: [tags[2]],
-        image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg"
+        image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg",
+        isActive: true,
+        status: statuses[0],
+        createdBy: users[0]
     },
     {
         id: "67c73b70-939e-467b-be95-ec1c53eb47d6",
@@ -146,7 +187,10 @@ export const games  = [
         genres: [genres[0], genres[4]],
         tags: [tags[0], tags[1], tags[2]],
         price: 15.37,
-        image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg"
+        image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg",
+        isActive: true,
+        status: statuses[0],
+        createdBy: users[0]
     }
 ]
 

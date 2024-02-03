@@ -1,6 +1,6 @@
+import { getFilteredGames } from "@/data/game";
 import ProductCard from "./product-card";
 import { FilterParams} from "@/lib/definitions";
-import { getFilteredGames } from "@/lib/data";
 
 
 export async function ProductTable({params}: {

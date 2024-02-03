@@ -1,25 +1,13 @@
 'use server'
 import { BreadcrumbsBanner } from "@/components/breadcrumbs-banner";
-import Footer from "@/layout/footer";
-import Header from "@/layout/header";
-import { getGameById } from "@/lib/data";
+import Footer from "@/components/layout/footer";
+import Header from "@/components/layout/header";
+import { getGameById } from "@/data/game";
 import { faBagShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-
-export async function generateStaticParams(){
-  return [
-    {id: "5b870e87-b128-4f1f-bf70-e26c51b08bf3"},
-    {id: "46ecf095-e261-47fa-9608-a81d39d019ee"},
-    {id: "deabcf92-68b1-40ae-b284-331b8698c10d"},
-    {id: "41a6ada6-6d01-4609-8047-d68dfb3eacd5"},
-    {id: "7437aed6-39b4-4bad-9bbd-cbb66670fe26"},
-    {id: "67c73b70-939e-467b-be95-ec1c53eb47d6"},
-    {id: "4b53f840-b3b8-4e79-b88b-193e50f666b6"}
-  ]
-}
 
 export async function generateMetadata(
   { params }: {params: { id: string } },
@@ -63,16 +51,16 @@ export default async function Page({params}: { params: {id: string}}) {
               <div className="flex gap-8">
                 <p className="text-gray-500">Genres: </p>
                 <div className="flex gap-4">
-                  {game!.genres.map((genre)=>(
-                    <Link className="text-primary hover:underline" href={{pathname: "/shop", query: {genre: genre}}}>{genre}</Link>
+                  {game!.genres.map((el)=>(
+                    <Link className="text-primary hover:underline" href={{pathname: "/shop", query: {genre: el.genre.name}}}>{el.genre.name}</Link>
                   ))}
                 </div>
               </div>
               <div className="flex gap-8">
                 <p className="text-gray-500">Tags: </p>
                 <div className="flex gap-4">
-                  {game!.tags.map((tag)=>(
-                    <Link className="text-primary hover:underline" href={{pathname: "/shop", query: {tag: tag}}}>{tag}</Link>
+                  {game!.tags.map((el)=>(
+                    <Link className="text-primary hover:underline" href={{pathname: "/shop", query: {tag: el.tag.name}}}>{el.tag.name}</Link>
                   ))}
                 </div>
               </div>

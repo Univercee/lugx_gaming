@@ -2,10 +2,11 @@ import { BreadcrumbsBanner } from "@/components/breadcrumbs-banner";
 import { ProductFilter } from "@/components/product-filter";
 import { ProductTable } from "@/components/product-table";
 import { ProductTableSkeleton } from "@/components/skeletons/product-table-skeleton";
-import Footer from "@/layout/footer";
-import Header from "@/layout/header";
-import { getGenreByName, getGenres, getTagByName, getTags } from "@/lib/data";
+import Footer from "@/components/layout/footer";
+import Header from "@/components/layout/header";
 import { Suspense } from "react";
+import { getGenres } from "@/data/genre";
+import { getTags } from "@/data/tag";
 
 export default async function Page(
   { searchParams }: {
@@ -16,8 +17,8 @@ export default async function Page(
 {
   const genres = await getGenres();
   const tags = await getTags();
-  const genre = searchParams?.genre||null;
-  const tag = searchParams?.tag||null;
+  const genre = searchParams?.genre;
+  const tag = searchParams?.tag;
   const title = "Our shop";
   return (
       <div className="min-h-screen flex flex-col gap-10">

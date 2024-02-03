@@ -1,5 +1,5 @@
 'use client'
-import { Genre, Tag } from "@/lib/definitions";
+import { Genre, Tag } from "@prisma/client";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export function ProductFilter({genres, tags}: {

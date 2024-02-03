@@ -6,16 +6,18 @@ import featureIcon4 from "~/featured-04.png";
 
 import ProductCard from "@/components/product-card";
 import ProductCardMostPlayed from "@/components/product-card-mostplayed";
-import Header from "@/layout/header";
+import Header from "@/components/layout/header";
 import { MainBanner } from "@/components/main-banner";
-import Footer from "@/layout/footer";
+import Footer from "@/components/layout/footer";
 import GenreCard from "@/components/genre-card";
-import { getFilteredGames, getGenresByTag } from "@/lib/data";
 import Link from "next/link";
+import { getFilteredGames } from "@/data/game";
+import { getGenresByTag } from "@/data/genre";
 
 export default async function Home() {
-  const mostPlayed = await getFilteredGames({genre: null, tag: "Most played"});
-  const trending = await getFilteredGames({genre: null, tag: "Trending"});
+  const mostPlayed = await getFilteredGames({tag: "Most played"});
+  
+  const trending = await getFilteredGames({tag: "Trending"});
   const topGenres = await getGenresByTag('Top');
 
   return (
