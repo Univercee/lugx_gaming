@@ -17,7 +17,9 @@ const config: Config = {
         "accent": "#EE626A",
         "primary": "#0171F8",
         "secondary": "#008AF8",
-        "muted": "#F7F7F7"
+        "muted": "#F7F7F7",
+        "success": "#4BB543",
+        "danger": "#EF4444"
       }
     },
   },

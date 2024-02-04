@@ -1,6 +1,6 @@
 import { BreadcrumbsBanner } from "@/components/breadcrumbs-banner";
-import Footer from "@/layout/footer";
-import Header from "@/layout/header";
+import Footer from "@/components/layout/footer";
+import Header from "@/components/layout/header";
 import Link from "next/link";
 
 
