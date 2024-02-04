@@ -1,5 +1,4 @@
 'use client'
-import { newPassword, register } from "@/lib/actions";
 import Link from "next/link";
 import { useFormState } from "react-dom";
 import { CardWrapper } from "../card/card-wrapper";
@@ -9,6 +8,7 @@ import LoaderWrapper from "../card/loader-wrapper";
 import { useSearchParams } from "next/navigation";
 import { getPasswordResetTokenByToken } from "@/data/password-resest-token";
 import { useEffect, useState } from "react";
+import { newPassword } from "@/lib/actions/password-reset";
 
 export function NewPasswordForm(){
     const [error, setError] = useState<string|undefined|null>();

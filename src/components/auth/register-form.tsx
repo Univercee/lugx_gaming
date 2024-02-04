@@ -1,11 +1,11 @@
 'use client'
-import { register } from "@/lib/actions";
 import Link from "next/link";
 import { useFormState } from "react-dom";
 import { CardWrapper } from "../card/card-wrapper";
 import { MessageSuccess } from "../card/message-success";
 import { MessageError } from "../card/message-error";
 import LoaderWrapper from "../card/loader-wrapper";
+import { register } from "@/lib/actions/auth";
 
 export function RegisterForm(){
     const initialState = { message: "", errors: {}};

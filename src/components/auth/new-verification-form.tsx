@@ -4,9 +4,9 @@ import LoaderWrapper from "../card/loader-wrapper";
 import { MessageSuccess } from "../card/message-success";
 import { MessageError } from "../card/message-error";
 import { useEffect, useState } from "react";
-import { newVerification } from "@/lib/actions";
 import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
 import Link from "next/link";
+import { newVerification } from "@/lib/actions/email-verification";
 
 export default function NewVerificationForm(){
     const [success, setSuccess] = useState<string|undefined|null>();

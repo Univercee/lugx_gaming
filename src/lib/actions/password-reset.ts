@@ -1,23 +1,12 @@
+"use server"
 import { getUserByEmail } from "@/data/user";
 import { NewPasswordSchema, ResetPasswordSchema, State } from "@/schemas";
-import { Resend } from "resend";
 import { getPasswordResetTokenByToken } from "@/data/password-resest-token";
 import { db } from "../db";
 import bcrypt from 'bcryptjs'
 import { generatePasswordResetToken } from "./tokens";
+import { sendResetPasswordEmail } from "./send-mails";
 
-const resend = new Resend(process.env.RESENT_API_KEY);
-
-//
-export async function sendResetPasswordEmail(email: string, token: string){
-    const confirmLink = `${process.env.BASE_URL}/auth/new-password?token=${token}`;
-    await resend.emails.send({
-        from: "onboarding@resend.dev",
-        to: email,
-        subject: "Reset your password",
-        html: `<p>Click <a href="${confirmLink}">here</a> to reset password.</p>`
-    });
-};
 
 //
 export async function resetPassword(prevState: State, formData: FormData): Promise<State>{

@@ -1,11 +1,11 @@
 'use client'
-import { resetPassword } from "@/lib/actions";
 import Link from "next/link";
 import { useFormState } from "react-dom";
 import { CardWrapper } from "../card/card-wrapper";
 import { MessageSuccess } from "../card/message-success";
 import { MessageError } from "../card/message-error";
 import LoaderWrapper from "../card/loader-wrapper";
+import { resetPassword } from "@/lib/actions/password-reset";
 
 export function ResetPasswordForm(){
     const initialState = { message: "", errors: {}};

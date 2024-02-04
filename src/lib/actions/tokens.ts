@@ -1,8 +1,10 @@
+"use server"
 import { getVerificationTokenByEmail } from "@/data/verification-token";
-import { PasswordResetToken, VerificationToken } from "@prisma/client";
-import { randomUUID } from "crypto";
+import { PasswordResetToken, TwoFactorToken, VerificationToken } from "@prisma/client";
+import { randomInt, randomUUID } from "crypto";
 import { db } from "../db";
 import { getPasswordResetTokenByEmail } from "@/data/password-resest-token";
+import { getTwoFactorTokenByEmail } from "@/data/two-factor-token";
 
 //
 export async function generateVerificationToken(email: string): Promise<VerificationToken>{
@@ -48,4 +50,27 @@ export async function generatePasswordResetToken(email: string): Promise<Passwor
         }
     })
     return passwordResetToken;
+}
+
+//
+export async function generateTwoFactorToken(email: string): Promise<TwoFactorToken>{
+    const token = randomInt(100_000, 1_000_000).toString();
+    const expires = new Date(new Date().getTime()+3600*1000);
+
+    const existingToken = await getTwoFactorTokenByEmail(email);
+    if(existingToken){
+        await db.twoFactorToken.delete({
+            where:{
+                id: existingToken.id
+            }
+        })
+    }
+    const twoFactorToken = await db.twoFactorToken.create({
+        data:{
+            email: email,
+            expires: expires,
+            token: token
+        }
+    })
+    return twoFactorToken;
 }

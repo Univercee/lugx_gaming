@@ -1,12 +1,13 @@
+"use server"
 import { getUserByEmail } from "@/data/user";
 import { LoginSchema, RegisterSchema, State } from "@/schemas";
-import { signIn } from "next-auth/react";
 import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
 import { AuthError } from "next-auth";
 import bcrypt from 'bcryptjs'
 import { db } from "../db";
-import { sendVerificationEmail } from "./email-verification";
 import { generateVerificationToken } from "./tokens";
+import { sendVerificationEmail } from "./send-mails";
+import { signIn } from "@/auth";
 
 //
 export async function login(prevState: State, formData: FormData): Promise<State> {

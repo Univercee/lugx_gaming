@@ -1,5 +1,4 @@
 'use client'
-import { login } from "@/lib/actions";
 import Link from "next/link";
 import { useFormState } from "react-dom";
 import { LoginSocials } from "./login-socials";
@@ -8,6 +7,7 @@ import { MessageError } from "../card/message-error";
 import { MessageSuccess } from "../card/message-success";
 import { CardWrapper } from "../card/card-wrapper";
 import LoaderWrapper from "../card/loader-wrapper";
+import { login } from "@/lib/actions/auth";
 
 export function LoginForm(){
     const initialState = { message: "", errors: {}};

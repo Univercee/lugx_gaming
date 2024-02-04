@@ -1,21 +1,8 @@
+"use server"
 import { getUserByEmail } from "@/data/user";
 import { getVerificationTokenByToken } from "@/data/verification-token";
 import { State } from "@/schemas";
-import { Resend } from "resend";
 import { db } from "../db";
-
-const resend = new Resend(process.env.RESENT_API_KEY);
-
-//
-export async function sendVerificationEmail(email: string, token: string){
-    const confirmLink = `${process.env.BASE_URL}/auth/new-verification?token=${token}`;
-    await resend.emails.send({
-        from: "onboarding@resend.dev",
-        to: email,
-        subject: "Confirm your email",
-        html: `<p>Click <a href="${confirmLink}">here</a> to confirm email.</p>`
-    });
-};
 
 //
 export async function newVerification(token: string): Promise<State>{
