@@ -1,33 +1,33 @@
 "use server"
 import { db } from "@/lib/db";
-import { VerifiactionToken } from "@prisma/client";
+import { VerificationToken } from "@prisma/client";
 
-export async function getVerificationTokenByEmail(email: string): Promise<VerifiactionToken|null>{
+export async function getVerificationTokenByEmail(email: string): Promise<VerificationToken|null>{
     try {
-        const verifiactionToken = await db.verifiactionToken.findFirst({
+        const verificationToken = await db.verificationToken.findFirst({
             where:{
                 email: email
             }
         });
       
-        return verifiactionToken;
+        return verificationToken;
     } catch (error) {
         console.error('Database Error:', error);
-        throw new Error('Failed to fetch VerifiactionToken.');
+        throw new Error('Failed to fetch VerificationToken.');
     }
 }
 
-export async function getVerificationTokenByToken(token: string): Promise<VerifiactionToken|null>{
+export async function getVerificationTokenByToken(token: string): Promise<VerificationToken|null>{
     try {
-        const verifiactionToken = await db.verifiactionToken.findFirst({
+        const verificationToken = await db.verificationToken.findFirst({
             where:{
                 token: token
             }
         });
       
-        return verifiactionToken;
+        return verificationToken;
     } catch (error) {
         console.error('Database Error:', error);
-        throw new Error('Failed to fetch VerifiactionToken.');
+        throw new Error('Failed to fetch VerificationToken.');
     }
 }
