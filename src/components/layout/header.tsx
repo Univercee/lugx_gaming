@@ -7,6 +7,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { LoginButton } from "../auth/login-button";
 
 export default function Header({Banner}: { Banner: JSX.Element }) {
     let isScrollEventInit = false;
@@ -84,7 +85,7 @@ export default function Header({Banner}: { Banner: JSX.Element }) {
               <Link href="/" className={`nav-link ${pathname=='/'?'active':''}`}><li>Home</li></Link>
               <Link href="/shop" className={`nav-link ${pathname=='/shop'?'active':''}`}><li>Our shop</li></Link>
               <Link href="/contacts" className={`nav-link ${pathname=='/contacts'?'active':''}`}><li>Contacts</li></Link>
-              {/* <Link href="#" className="nav-link sign-in"><li>Sign in</li></Link> */}
+              <LoginButton><li>Sign in</li></LoginButton>
             </ul>
           </div>
         </nav>
