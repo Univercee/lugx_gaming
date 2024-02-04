@@ -1,27 +1,31 @@
 "use server"
 import { getUserByEmail } from "@/data/user";
-import { LoginSchema, RegisterSchema, State } from "@/schemas";
+import { LoginSchema, RegisterSchema } from "@/schemas";
 import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
 import { AuthError } from "next-auth";
 import bcrypt from 'bcryptjs'
 import { db } from "../db";
-import { generateVerificationToken } from "./tokens";
-import { sendVerificationEmail } from "./send-mails";
+import { generateTwoFactorToken, generateVerificationToken } from "./tokens";
+import { sendTwoFactorEmail, sendVerificationEmail } from "./send-mails";
 import { signIn } from "@/auth";
+import { State } from "../definitions";
+import { getTwoFactorTokenByEmail } from "@/data/two-factor-token";
+import { getTwoFactorConfirmationByUserId } from "@/data/two-factor-confirmation";
 
 //
 export async function login(prevState: State, formData: FormData): Promise<State> {
     const validatedFields  = LoginSchema.safeParse({
         email: formData.get('email'),
         password: formData.get('password'),
+        code: formData.get('code')||undefined
     });
+    
 
     if(!validatedFields.success){
         return {error: "Invalid fields!"};
     }
-    
-    const { email, password } = validatedFields.data;
-
+    const { email, password, code } = validatedFields.data;
+    console.log({ email, password, code });
     const existingUser = await getUserByEmail(email);
     if(!existingUser || !existingUser.email || !existingUser.password){
         return {error: "Email does not exist!"};
@@ -31,6 +35,42 @@ export async function login(prevState: State, formData: FormData): Promise<State
         await sendVerificationEmail(verificationToken.email, verificationToken.token);
         return {message: "Confirmation email sent!"}
     }
+    
+    
+    if(existingUser.isTwoFactorEnabled && existingUser.email){
+        if(code){
+            const twoFactorToken = await getTwoFactorTokenByEmail(existingUser.email);
+            if(!twoFactorToken || twoFactorToken.token !== code){
+                return {error: "Invalid code!"};
+            }
+            if(twoFactorToken.expires < new Date()){
+                return {error: "Code expired!"};
+            }
+            await db.twoFactorToken.delete({
+                where: {id: twoFactorToken.id}
+            });
+
+            const twoFactorConfirmation = await getTwoFactorConfirmationByUserId(existingUser.id);
+            if(twoFactorConfirmation){
+                await db.twoFactorConfirmation.delete({
+                    where: {id: twoFactorConfirmation.id}
+                });
+            }
+            await db.twoFactorConfirmation.create({
+                data: {
+                    userId: existingUser.id
+                }
+            })
+            console.log('2FA');
+            
+        }
+        else{
+            const twoFactorToken = await generateTwoFactorToken(existingUser.email);
+            await sendTwoFactorEmail(twoFactorToken.email, twoFactorToken.token);
+            return { twoFactor: true }
+        }
+    }
+
     try {
         await signIn("credentials", {
             email,

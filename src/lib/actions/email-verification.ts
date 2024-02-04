@@ -1,8 +1,8 @@
 "use server"
 import { getUserByEmail } from "@/data/user";
 import { getVerificationTokenByToken } from "@/data/verification-token";
-import { State } from "@/schemas";
 import { db } from "../db";
+import { State } from "../definitions";
 
 //
 export async function newVerification(token: string): Promise<State>{

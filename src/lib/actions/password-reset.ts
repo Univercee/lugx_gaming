@@ -1,11 +1,12 @@
 "use server"
 import { getUserByEmail } from "@/data/user";
-import { NewPasswordSchema, ResetPasswordSchema, State } from "@/schemas";
+import { NewPasswordSchema, ResetPasswordSchema } from "@/schemas";
 import { getPasswordResetTokenByToken } from "@/data/password-resest-token";
 import { db } from "../db";
 import bcrypt from 'bcryptjs'
 import { generatePasswordResetToken } from "./tokens";
 import { sendResetPasswordEmail } from "./send-mails";
+import { State } from "../definitions";
 
 
 //

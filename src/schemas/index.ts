@@ -1,23 +1,13 @@
 import * as z from 'zod';
 
-export type State = {
-    errors?: {
-        email?: string[],
-        password?: string[],
-        name?: string[]
-    },
-    message?: string | null,
-    error?: string | null
-};
-
-
 export const LoginSchema = z.object({
     email: z.string().email({
         message: "Email is required",
     }),
     password: z.string().min(1, {
         message: "Password is required",
-    })
+    }),
+    code: z.optional(z.string().length(6))
 })
 
 export const RegisterSchema = z.object({
@@ -41,4 +31,4 @@ export const NewPasswordSchema = z.object({
     })
 })
 
-export const ResetPasswordSchema = LoginSchema.omit({password: true});
+export const ResetPasswordSchema = LoginSchema.omit({password: true, code: true});
