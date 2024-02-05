@@ -5,10 +5,8 @@ import { User } from "next-auth";
 import Link from "next/link";
 
 export function LoginButton({user}: {user: User}){
-    console.log(user);
-    
     return (
-        <div className="flex items-center justify-center gap-4">
+        <div className="flex items-center justify-center gap-4 w-full">
             <div className="nav-link sign-in cursor-pointer">
                 {!user && <Link href="/auth/login">Sign in</Link>}
                 {user && <button onClick={()=>{logout()}}>Logout</button>}

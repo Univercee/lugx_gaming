@@ -169,7 +169,7 @@ input[type=number] {
 }
 
 .nav-list{
-    @apply rounded-none flex flex-row gap-10;
+    @apply rounded-none flex flex-row gap-10 items-center;
 }
 
 .nav-link {
@@ -225,7 +225,7 @@ input[type=number] {
 
 @media (max-width:1024px) {
     .nav-link {
-        @apply rounded-none text-black px-0 py-2;
+        @apply rounded-none text-black px-0 py-2 w-full;
     }
     .nav-link:not(:last-child){
         border-bottom: solid lightgrey 1px;
@@ -237,7 +237,7 @@ input[type=number] {
     }
     
     .nav-list{
-        @apply flex-col absolute bg-white text-center gap-0 rounded-b-3xl;
+        @apply flex-col absolute bg-white text-center gap-0 rounded-b-3xl shadow-2xl;
         top: 80px;
         left: 10%;
         max-height: 0;
