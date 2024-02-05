@@ -4,7 +4,7 @@
  * @type {string[]}
  */
 export const privateRoutes = [
-    "/settings"
+    "/dashboard"
 ];
 
 /**
@@ -33,4 +33,4 @@ export const apiAuthPrefix = "/api/auth";
  * The default redirect path after logged in
  * @type {string}
  */
-export const DEFAULT_LOGIN_REDIRECT = "/settings"
+export const DEFAULT_LOGIN_REDIRECT = "/dashboard"

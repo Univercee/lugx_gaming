@@ -5,7 +5,7 @@ import bgImage from "~/banner-bg.jpg";
 
 export default function Footer() {
     return (
-      <footer className="w-full flex justify-center" style={{padding: "20px 0 60px 0", backgroundImage: `url(${bgImage.src})`, borderRadius: "150px 150px 0 0"}}>
+      <footer className="w-full flex justify-center" style={{padding: "20px 0 20px 0", backgroundImage: `url(${bgImage.src})`, borderRadius: "150px 150px 0 0"}}>
         <div className="flex flex-col gap-5 text-center w-1/2 text-white">
           <p>Designed by <Link href="https://templatemo.com/">TemplateMo</Link></p>
           <div className="flex flex-col gap-2">

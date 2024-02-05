@@ -14,7 +14,7 @@ import { getTwoFactorConfirmationByUserId } from "@/data/two-factor-confirmation
 
 //
 export async function logout(){
-    await signOut({redirectTo:"/"});
+    await signOut();
 }
 
 //

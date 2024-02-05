@@ -1,17 +1,19 @@
 'use client'
 import Image from "next/image"
 import logo from "~/logo.png";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import bgImage from "~/banner-bg.jpg";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { LoginButton } from "../auth/login-button";
+import { useCurrentUser } from "@/hooks/use-current-user";
 
 export default function Header({Banner}: { Banner: JSX.Element }) {
     let isScrollEventInit = false;
     let isClickEventInit = false;
+    const user = useCurrentUser();
     const pathname = usePathname();
     const headerRef = useRef(null);
     const listRef = useRef(null);
@@ -85,14 +87,15 @@ export default function Header({Banner}: { Banner: JSX.Element }) {
               <Link href="/" className={`nav-link ${pathname=='/'?'active':''}`}><li>Home</li></Link>
               <Link href="/shop" className={`nav-link ${pathname=='/shop'?'active':''}`}><li>Our shop</li></Link>
               <Link href="/contacts" className={`nav-link ${pathname=='/contacts'?'active':''}`}><li>Contacts</li></Link>
-              <LoginButton><li>Sign in</li></LoginButton>
+              {user && <Link href="/dashboard" className={`nav-link ${pathname=='/dashboard'?'active':''}`}><li>Dashboard</li></Link>}
+              <LoginButton user={user}></LoginButton>
             </ul>
           </div>
         </nav>
 
         {/* banner */}
         {/* my-32 suddenly stop working */}
-        <div className="text-white flex flex-col justify-center items-center my-32" style={{margin: "8rem 0 8rem 0"}}>
+        <div className="text-white flex flex-col justify-center items-center" style={{margin: "8rem 0 8rem 0"}}>
           {Banner}
         </div>
 

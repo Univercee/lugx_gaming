@@ -1,19 +1,22 @@
+import { logout } from "@/lib/actions/auth";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { User } from "next-auth";
 import Link from "next/link";
- 
-interface LoginButtonProps {
-    children: React.ReactNode,
-    mode?: "modal" | "redirect",
-    asChild?: boolean
-}
 
-export const LoginButton = ({
-    children,
-    mode,
-    asChild
-}: LoginButtonProps)=>{
+export function LoginButton({user}: {user: User}){
+    console.log(user);
     
-
     return (
-        <Link href="/auth/login" className="nav-link sign-in">{children}</Link>
+        <div className="flex items-center justify-center gap-4">
+            <div className="nav-link sign-in cursor-pointer">
+                {!user && <Link href="/auth/login">Sign in</Link>}
+                {user && <button onClick={()=>{logout()}}>Logout</button>}
+            </div>
+            {user && <div className={`max-lg:hidden h-5 w-5 flex items-center justify-center p-5 rounded-full ${!user.image??"bg-white"}`} style={{backgroundSize:"100% 100%", backgroundImage: user.image?`url(${user.image})`:""}}>
+                {!user.image && <FontAwesomeIcon className="h-5 w-5" icon={faUser}></FontAwesomeIcon>}
+            </div>}
+            
+        </div>
     )
 }

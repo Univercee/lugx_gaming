@@ -25,7 +25,11 @@
 }
 
 .animated, .animated *{
-    transition: all .3s;
+    transition: all .3s !important;
+}
+
+.not-animated, .not-animated *{
+    transition: all 0s !important;
 }
 
 .wrapper {
@@ -39,7 +43,6 @@
     left: 0;
     right: 0;
     z-index: 100;
-    transition: all .5s ease 0s;
     right: 0;
     display: flex;
     justify-content: center;
@@ -215,7 +218,7 @@ input[type=number] {
         @apply disabled button-accented;
     }
     .sign-in:hover{
-        background-color: var(--color-accent) !important;
+        background-color: rgba(238, 98, 106, .9) !important;
     }
 }
 

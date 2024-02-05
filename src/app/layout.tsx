@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
+import { SessionProvider } from "next-auth/react";
 
 const poppins = Poppins({ subsets: ["latin"], weight:['700', '500', '400', '300'] });
 
@@ -21,7 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={poppins.className}>
-        {children}
+      <SessionProvider>
+       {children}
+      </SessionProvider> 
       </body>
       <GoogleAnalytics gaId="G-9N358EQ6TL"></GoogleAnalytics>
     </html>

@@ -6,12 +6,15 @@ import { MessageSuccess } from "../card/message-success";
 import { MessageError } from "../card/message-error";
 import LoaderWrapper from "../card/loader-wrapper";
 import { register } from "@/lib/actions/auth";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 export function RegisterForm(){
     const initialState = { message: "", errors: {}};
     let [state, dispatch] = useFormState(register, initialState);
     return (
         <CardWrapper>
+            <Link href="/" className="inline-block mb-7 hover:underline text-primary"><FontAwesomeIcon icon={faArrowLeft}></FontAwesomeIcon> To main page</Link>
             <form action={dispatch} className="flex flex-col items-center gap-6">
                 <div className="w-full">
                     <div className="flex flex-col gap-2">

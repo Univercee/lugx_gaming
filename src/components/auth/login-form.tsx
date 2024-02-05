@@ -8,6 +8,8 @@ import { MessageSuccess } from "../card/message-success";
 import { CardWrapper } from "../card/card-wrapper";
 import LoaderWrapper from "../card/loader-wrapper";
 import { login } from "@/lib/actions/auth";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 export function LoginForm(){
     const initialState = { message: "", errors: {}, twoFactor: false};
@@ -18,6 +20,7 @@ export function LoginForm(){
         :"";
     return (
         <CardWrapper>
+            <Link href="/" className="inline-block mb-7 hover:underline text-primary"><FontAwesomeIcon icon={faArrowLeft}></FontAwesomeIcon> To main page</Link>
             <form action={dispatch} className="flex flex-col items-center gap-8">
                 <div className={`w-full flex flex-col gap-4 ${state.twoFactor?'invisible h-0':''}`}>
                     <div className="flex flex-col gap-3">
@@ -28,6 +31,7 @@ export function LoginForm(){
                         <label className="font-semibold text-xl" htmlFor="password">Password</label>
                         <input className="border rounded-xl p-3" id="password" type="password" name='password' aria-describedby='password-error'/>
                     </div>
+                    <Link href="/auth/reset-password" className="inline-block mb-7 hover:underline text-sm">Forgot password?</Link>
                     <LoginSocials></LoginSocials>
                 </div>
                 <div className={`w-full ${!state.twoFactor?'invisible h-0':''}`}>

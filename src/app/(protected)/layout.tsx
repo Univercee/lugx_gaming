@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={poppins.className}>
         <SessionProvider>
-            {children}
+          {children}
         </SessionProvider>
       </body>
       <GoogleAnalytics gaId="G-9N358EQ6TL"></GoogleAnalytics>
