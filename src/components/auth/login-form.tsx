@@ -36,7 +36,7 @@ export function LoginForm(){
                         <input className="border rounded-xl p-3" id="code" type="string" name='code' aria-describedby='code-error'/>
                     </div>
                 </div>
-                <MessageError message={state.error||urlError}></MessageError>
+                <MessageError message={state.error||(urlError && !state.twoFactor)?urlError:null}></MessageError>
                 <MessageSuccess message={state.message}></MessageSuccess>
                 <LoaderWrapper mode="form">
                     <button type="submit" className="button-accented">Log in</button>

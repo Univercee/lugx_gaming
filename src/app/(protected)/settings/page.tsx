@@ -1,4 +1,5 @@
-import { auth, signOut } from "@/auth"
+import { auth } from "@/auth"
+import { logout } from "@/lib/actions/auth";
 
 export default async function Page(){
     const session = await auth();
@@ -8,7 +9,7 @@ export default async function Page(){
             <p>{JSON.stringify(session)}</p>
             <form action={async()=>{
                 'use server'
-                await signOut();
+                await logout();
             }}>
                 <button type="submit">Sign out</button>
             </form>

@@ -7,10 +7,15 @@ import bcrypt from 'bcryptjs'
 import { db } from "../db";
 import { generateTwoFactorToken, generateVerificationToken } from "./tokens";
 import { sendTwoFactorEmail, sendVerificationEmail } from "./send-mails";
-import { signIn } from "@/auth";
+import { signIn, signOut } from "@/auth";
 import { State } from "../definitions";
 import { getTwoFactorTokenByEmail } from "@/data/two-factor-token";
 import { getTwoFactorConfirmationByUserId } from "@/data/two-factor-confirmation";
+
+//
+export async function logout(){
+    await signOut({redirectTo:"/"});
+}
 
 //
 export async function login(prevState: State, formData: FormData): Promise<State> {
@@ -25,7 +30,7 @@ export async function login(prevState: State, formData: FormData): Promise<State
         return {error: "Invalid fields!"};
     }
     const { email, password, code } = validatedFields.data;
-    console.log({ email, password, code });
+
     const existingUser = await getUserByEmail(email);
     if(!existingUser || !existingUser.email || !existingUser.password){
         return {error: "Email does not exist!"};
@@ -37,7 +42,7 @@ export async function login(prevState: State, formData: FormData): Promise<State
     }
     
     
-    if(existingUser.isTwoFactorEnabled && existingUser.email){
+    if(existingUser.isTwoFactorEnabled && existingUser.email && existingUser.emailVerified){
         if(code){
             const twoFactorToken = await getTwoFactorTokenByEmail(existingUser.email);
             if(!twoFactorToken || twoFactorToken.token !== code){
@@ -61,8 +66,6 @@ export async function login(prevState: State, formData: FormData): Promise<State
                     userId: existingUser.id
                 }
             })
-            console.log('2FA');
-            
         }
         else{
             const twoFactorToken = await generateTwoFactorToken(existingUser.email);
