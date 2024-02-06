@@ -11,10 +11,12 @@ import { signIn, signOut } from "@/auth";
 import { State } from "../definitions";
 import { getTwoFactorTokenByEmail } from "@/data/two-factor-token";
 import { getTwoFactorConfirmationByUserId } from "@/data/two-factor-confirmation";
+import { cookies } from "next/headers";
 
 //
 export async function logout(){
-    await signOut({ redirectTo: "/" });
+    cookies().delete("authjs.session-token");
+    await signOut();
 }
 
 //

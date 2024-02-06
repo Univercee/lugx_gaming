@@ -1,4 +1,5 @@
-import NextAuth from 'next-auth';
+import NextAuth, { Session } from 'next-auth';
+import { JWT } from 'next-auth/jwt';
 import { authConfig } from './auth.config';
 import { PrismaAdapter } from '@auth/prisma-adapter'
 import { db } from '@/lib/db';
@@ -39,11 +40,11 @@ export const {
             }
             return true;
         },
-        async session({session, token}){
-            if(session.user && token.sub){
+        async session({session, token}: {session: Session, token?: JWT}){
+            if(session.user && token?.sub){
                 session.user.id = token.sub;
             }
-            if(token.role && session.user){
+            if(token?.role && session.user){
                 session.user.role = token.role;
             }
             return session;

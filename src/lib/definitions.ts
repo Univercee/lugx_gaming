@@ -28,6 +28,6 @@ export type GenreWithRelations = Genre & {
 
 
 export type FilterParams = {
-    tag?: string,
-    genre?: string
+    tag?: string|null,
+    genre?: string|null
 }

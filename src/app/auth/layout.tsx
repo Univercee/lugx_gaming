@@ -14,17 +14,14 @@ export const metadata: Metadata = {
   }
 };
 
-export default function RootLayout({
+export default function Layout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={poppins.className}>
-        {children}
-      </body>
-      <GoogleAnalytics gaId="G-9N358EQ6TL"></GoogleAnalytics>
-    </html>
+    <>
+      {children}
+    </>
   );
 }

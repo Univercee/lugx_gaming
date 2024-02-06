@@ -1,7 +1,6 @@
 'use client'
 import Image from "next/image"
 import logo from "~/logo.png";
-import bannerImage from "~/banner-image.jpg";
 import { useEffect, useRef } from "react";
 import bgImage from "~/banner-bg.jpg";
 import Link from "next/link";
@@ -9,14 +8,17 @@ import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { LoginButton } from "../auth/login-button";
+import { Breadcrumbs } from "../breadcrumbs";
 import { useSession } from "next-auth/react";
 
-export default function Header() {
+export default function BreadcrumbsHeader({title, pageName}:{title?: string, pageName?: string}) {
     let isScrollEventInit = false;
     let isClickEventInit = false;
     const session = useSession();
     const user = session.data?.user;
+    
     const pathname = usePathname();
+    const routeName = pathname.split("/")[pathname.length-1];
     const headerRef = useRef(null);
     const listRef = useRef(null);
     const barsRef = useRef(null)
@@ -79,12 +81,11 @@ export default function Header() {
     return (
       <div className="main-banner flex flex-col w-full" style={{backgroundImage: `url(${bgImage.src})`, backgroundSize: "100% 100%", borderRadius: "0 0 150px 150px"}}>
        <div className="wrapper pt-12">
-
         {/* navigation */}
         <nav className="absolute header w-full" ref={headerRef}>
           <div className="container flex items-center justify-between px-8 lg:px-24 mx-auto relative">
             <Link href="/"><Image unoptimized src={logo.src} width={160} height={60} alt="Logo"></Image></Link>
-            <FontAwesomeIcon icon={faBars} className="nav-bars h-10 w-10" ref={barsRef}/>
+            <FontAwesomeIcon icon={faBars} className="nav-bars" ref={barsRef}/>
             <ul className="nav-list text-nowrap" ref={listRef}>
               <Link href="/" className={`nav-link ${pathname=='/'?'active':''}`}><li>Home</li></Link>
               <Link href="/shop" className={`nav-link ${pathname=='/shop'?'active':''}`}><li>Our shop</li></Link>
@@ -96,23 +97,12 @@ export default function Header() {
         </nav>
 
         {/* banner */}
+        {/* my-32 suddenly stop working */}
         <div className="text-white flex flex-col justify-center items-center" style={{margin: "8rem 0 8rem 0"}}>
-          <div className="flex gap-10 justify-between items-center max-lg:flex-col max-lg:text-center">
-              <div className="w-1/2 max-lg:w-full pt-24 max-lg:flex max-lg:flex-col max-lg:items-center">
-                  <h6>Welcome to lugx</h6>
-                  <h2 className="font-bold">BEST GAMING SITE EVER!</h2>
-                  <p>LUGX Gaming is free Bootstrap 5 HTML CSS website template for your gaming websites. You can download and use this layout for commercial purposes. Please tell your friends about TemplateMo.</p>
-                  <div className="search flex mt-20 max-lg:justify-center w-full">
-                      <input className="text-black w-full" type="text" placeholder="Type something" />
-                      <button className="bg-accent hover:bg-primary uppercase font-bold">Search now</button>
-                  </div>
-              </div>
-              <div className=" h-full relative max-lg:min-w-72 max-lg:flex max-lg:justify-center">
-                  <Image unoptimized className="rounded-3xl" src={bannerImage.src} alt="Banner image"width={400} height={500}></Image>
-                  <div className="banner-sale">-40%</div>
-                  <div className="banner-price">$22</div>
-              </div>
-          </div>
+            <div className="flex flex-col gap-4 justify-between items-center ">
+                <h1 className="uppercase font-semibold text-center" style={{fontSize: "3rem"}}>{title?title:routeName}</h1>
+                <Breadcrumbs currentPageName={pageName?pageName:routeName}></Breadcrumbs>
+            </div>
         </div>
 
        </div>

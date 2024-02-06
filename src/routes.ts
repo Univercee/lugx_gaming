@@ -4,7 +4,10 @@
  * @type {string[]}
  */
 export const privateRoutes = [
-    "/dashboard"
+    "/dashboard",
+    "/dashboard/account",
+    "/dashboard/games",
+
 ];
 
 /**

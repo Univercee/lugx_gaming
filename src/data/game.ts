@@ -3,8 +3,8 @@ import { db } from "@/lib/db";
 import { FilterParams, GameWithRelations } from "@/lib/definitions";
 
 export async function getFilteredGames(params: FilterParams): Promise<GameWithRelations[]>{
-    const genre = params.genre;
-    const tag = params.tag;
+    const genre = params.genre??undefined;
+    const tag = params.tag??undefined;
     
     try {
         if(tag){
@@ -14,7 +14,7 @@ export async function getFilteredGames(params: FilterParams): Promise<GameWithRe
                         some:{
                             genre: {
                                 name: genre
-                            },
+                            }
                         }
                     },
                     AND:{
@@ -98,7 +98,7 @@ export async function getFilteredGames(params: FilterParams): Promise<GameWithRe
     }
   }
   
-  export async function getGameById(id: string): Promise<GameWithRelations|null>{
+export async function getGameById(id: string): Promise<GameWithRelations|null>{
     try {
       
       try {
@@ -142,4 +142,44 @@ export async function getFilteredGames(params: FilterParams): Promise<GameWithRe
         console.error('Database Error:', error);
         throw new Error('Failed to fetch GameById.');
     }
-  }
+}
+
+export async function getGamesByUserId(userId: string): Promise<GameWithRelations[]>{
+    try {
+        const games = await db.game.findMany({
+            where:{
+                userId
+            },
+            include:{
+                tags: {
+                    select: {
+                        tag:true
+                    },
+                    orderBy: {
+                        tag: {
+                            name: 'asc'
+                        }
+                    }
+                },
+                genres: {
+                    select: {
+                        genre: true
+                    },
+                    orderBy: {
+                        genre: {
+                            name: 'asc'
+                        }
+                    }
+                }
+            },
+            orderBy: {
+                name:"asc"
+            }
+        });
+        
+        return games;
+      } catch (error) {
+          console.error('Database Error:', error);
+          throw new Error('Failed to fetch GamesById.');
+      }
+}
