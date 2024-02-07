@@ -16,6 +16,7 @@ import { cookies } from "next/headers";
 //
 export async function logout(){
     cookies().delete("authjs.session-token");
+    cookies().delete("authjs.session-token");
     await signOut();
 }
 

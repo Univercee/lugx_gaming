@@ -26,7 +26,7 @@ export default async function Page({params}: { params: {id: string}}) {
 
   return (
     <div>
-      <BreadcrumbsHeader title={game!.name}></BreadcrumbsHeader>
+      <BreadcrumbsHeader title={game!.name} pageName={game!.name}></BreadcrumbsHeader>
       <div className="grow wrapper">
         <div className="my-16 max-md:px-0">
           <main className="flex flex-col-reverse md:flex-row justify-between items-center gap-32 my-32">

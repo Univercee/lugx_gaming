@@ -33,7 +33,7 @@
 }
 
 .wrapper {
-    @apply container mx-auto px-0 xl:px-24;
+    @apply container mx-auto px-2 xl:px-24;
 }
 
 .header {

@@ -2,10 +2,8 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
-import Footer from "@/components/layout/footer";
 import { auth } from "@/auth";
 import { SessionProvider } from "next-auth/react";
-import Header from "@/components/layout/header";
 
 const poppins = Poppins({ subsets: ["latin"], weight:['700', '500', '400', '300'] });
 

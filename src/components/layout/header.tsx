@@ -101,7 +101,7 @@ export default function Header() {
               <div className="w-1/2 max-lg:w-full pt-24 max-lg:flex max-lg:flex-col max-lg:items-center">
                   <h6>Welcome to lugx</h6>
                   <h2 className="font-bold">BEST GAMING SITE EVER!</h2>
-                  <p>LUGX Gaming is free Bootstrap 5 HTML CSS website template for your gaming websites. You can download and use this layout for commercial purposes. Please tell your friends about TemplateMo.</p>
+                  <p>This is a portfolio project written using Next.js, Tailwind and PostgreSQL. You can view the source code <a className="text-accent font-bold hover:underline" href="https://github.com/Univercee/lugx_gaming"> here</a></p>
                   <div className="search flex mt-20 max-lg:justify-center w-full">
                       <input className="text-black w-full" type="text" placeholder="Type something" />
                       <button className="bg-accent hover:bg-primary uppercase font-bold">Search now</button>
