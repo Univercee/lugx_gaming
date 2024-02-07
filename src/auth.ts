@@ -6,7 +6,6 @@ import { db } from '@/lib/db';
 import { getUserById } from './data/user';
 import { getTwoFactorConfirmationByUserId } from './data/two-factor-confirmation';
 
-
 export const { 
     handlers: {GET, POST}, auth, signIn, signOut } = NextAuth({
     ...authConfig,
