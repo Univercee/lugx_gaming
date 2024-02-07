@@ -28,7 +28,8 @@ export async function login(prevState: State, formData: FormData): Promise<State
         code: formData.get('code')||undefined
     });
     
-
+    console.log(validatedFields);
+    
     if(!validatedFields.success){
         return {error: "Invalid fields!"};
     }
