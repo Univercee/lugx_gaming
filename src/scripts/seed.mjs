@@ -1,5 +1,32 @@
 import { db } from '@vercel/postgres';
-import { games, tags, genres } from '../lib/placeholderdata.mjs';
+import { games, tags, genres, users } from '../lib/placeholderdata.mjs';
+import bcrypt from 'bcryptjs'
+// users
+async function seedUsers(client) {
+  try {
+    await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+
+    const insertedUsers = await Promise.all(
+      users.map(async (user) => {
+        const hashedPassword = await bcrypt.hash(user.password, 10);
+        return client.sql`
+          INSERT INTO users (id, name, email, password, image)
+          VALUES (${user.id}, ${user.name}, ${user.email}, ${hashedPassword}, ${user.image})
+          ON CONFLICT (id) DO NOTHING;
+        `;
+      }),
+    );
+
+    console.log(`Seeded ${insertedUsers.length} users`);
+
+    return {
+      insertedUsers,
+    };
+  } catch (error) {
+    console.error('Error seeding users:', error);
+    throw error;
+  }
+}
 
 // games
 async function seedGames(client) {
@@ -166,12 +193,13 @@ async function seedGenresTags(client) {
 async function main() {
   const client = await db.connect();
 
-  await seedGames(client);
-  await seedGenres(client);
-  await seedTags(client);
-  await seedGamesTags(client);
-  await seedGenresTags(client);
-  await seedGamesGenres(client);
+  await seedUsers(client);
+  // await seedGames(client);
+  // await seedGenres(client);
+  // await seedTags(client);
+  // await seedGamesTags(client);
+  // await seedGenresTags(client);
+  // await seedGamesGenres(client);
   
 
   await client.end();

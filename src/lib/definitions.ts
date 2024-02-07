@@ -1,32 +1,33 @@
-export type GameRaw = {
-    id: string,
-    name: string,
-    description: string,
-    price: number,
-    image: string,
+import { Game, Genre, Tag } from "@prisma/client"
+
+export type State = {
+    errors?: {
+        email?: string[],
+        password?: string[],
+        name?: string[]
+    },
+    message?: string | null,
+    error?: string | null,
+    twoFactor?: boolean
+};
+
+export type GameWithRelations = Game & {
+    genres: {
+        genre: Genre
+    }[],
+    tags: {
+        tag: Tag
+    }[]
 }
 
-export type Game = GameRaw & {
-    genres: string[],
-    tags: string[]
+export type GenreWithRelations = Genre & {
+    tags: {
+        tag: Tag
+    }[]
 }
 
-export type GenreRaw = {
-    id: string,
-    name: string,
-    image: string
-}
-
-export type Genre = GameRaw & {
-    tags: string[]
-}
-
-export type Tag = {
-    id: string,
-    name: string
-}
 
 export type FilterParams = {
-    tag: string|null,
-    genre: string|null
+    tag?: string|null,
+    genre?: string|null
 }

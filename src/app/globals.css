@@ -25,11 +25,15 @@
 }
 
 .animated, .animated *{
-    transition: all .3s;
+    transition: all .3s !important;
+}
+
+.not-animated, .not-animated *{
+    transition: all 0s !important;
 }
 
 .wrapper {
-    @apply container mx-auto px-8 lg:px-24;
+    @apply container mx-auto px-2 xl:px-24;
 }
 
 .header {
@@ -39,7 +43,6 @@
     left: 0;
     right: 0;
     z-index: 100;
-    transition: all .5s ease 0s;
     right: 0;
     display: flex;
     justify-content: center;
@@ -146,6 +149,11 @@
     color: white;
 }
 
+.button-switcher.disabled {
+    opacity: .5;
+    pointer-events: none;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     /* display: none; <- Crashes Chrome on hover */
@@ -166,7 +174,7 @@ input[type=number] {
 }
 
 .nav-list{
-    @apply rounded-none flex flex-row gap-10;
+    @apply rounded-none flex flex-row gap-10 items-center;
 }
 
 .nav-link {
@@ -188,6 +196,14 @@ input[type=number] {
         "email subject"
         "message message"
         "submit submit";
+}
+
+.nav-link-dashboard {
+    @apply rounded-md border p-3 hover:bg-black hover:text-white;
+    transition: all .3s;
+}
+.nav-link-dashboard.active {
+    @apply bg-black text-white;
 }
 
 
@@ -215,14 +231,14 @@ input[type=number] {
         @apply disabled button-accented;
     }
     .sign-in:hover{
-        background-color: var(--color-accent) !important;
+        background-color: rgba(238, 98, 106, .9) !important;
     }
 }
 
 
 @media (max-width:1024px) {
     .nav-link {
-        @apply rounded-none text-black px-0 py-2;
+        @apply rounded-none text-black px-0 py-2 w-full;
     }
     .nav-link:not(:last-child){
         border-bottom: solid lightgrey 1px;
@@ -234,7 +250,7 @@ input[type=number] {
     }
     
     .nav-list{
-        @apply flex-col absolute bg-white text-center gap-0 rounded-b-3xl;
+        @apply flex-col absolute bg-white text-center gap-0 rounded-b-3xl shadow-2xl;
         top: 80px;
         left: 10%;
         max-height: 0;
