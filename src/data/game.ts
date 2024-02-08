@@ -12,40 +12,32 @@ export async function getFilteredGames(params: FilterParams): Promise<GameWithRe
                 where:{
                     genres:{
                         some:{
-                            genre: {
-                                name: genre
-                            }
+                            name: genre
                         }
                     },
                     AND:{
                         tags:{
                             some:{
-                                tag: {
-                                    name: tag
-                                }
+                                name: tag
                             }
                         }
                     }
                 },
                 include:{
                     tags: {
-                        select: {
-                            tag: true
-                        },
                         orderBy: {
-                            tag: {
-                                name: 'asc'
-                            }
+                            name: 'asc'
                         }
                     },
                     genres: {
-                        select: {
-                            genre: true
-                        },
                         orderBy: {
-                            genre: {
-                                name: 'asc'
-                            }
+                            name: 'asc'
+                        }
+                    },
+                    status: {
+                        select: {
+                            id: true,
+                            name: true
                         }
                     }
                 },
@@ -59,31 +51,25 @@ export async function getFilteredGames(params: FilterParams): Promise<GameWithRe
                 where:{
                     genres:{
                         some:{
-                            genre: {
                                 name: genre
-                            },
                         }
                     }
                 },
                 include:{
                     tags: {
-                        select: {
-                            tag: true
-                        },
                         orderBy: {
-                            tag: {
-                                name: 'asc'
-                            }
+                             name: 'asc'
                         }
                     },
                     genres: {
-                        select: {
-                            genre: true
-                        },
                         orderBy: {
-                            genre: {
-                                name: 'asc'
-                            }
+                            name: 'asc'
+                        }
+                    },
+                    status: {
+                        select: {
+                            id: true,
+                            name: true
                         }
                     }
                 },
@@ -108,23 +94,19 @@ export async function getGameById(id: string): Promise<GameWithRelations|null>{
             },
             include:{
                 tags: {
-                    select: {
-                        tag:true
-                    },
                     orderBy: {
-                        tag: {
-                            name: 'asc'
-                        }
+                        name: 'asc'
                     }
                 },
                 genres: {
-                    select: {
-                        genre: true
-                    },
                     orderBy: {
-                        genre: {
-                            name: 'asc'
-                        }
+                        name: 'asc'
+                    }
+                },
+                status: {
+                    select: {
+                        id: true,
+                        name: true
                     }
                 }
             },
@@ -152,23 +134,19 @@ export async function getGamesByUserId(userId: string): Promise<GameWithRelation
             },
             include:{
                 tags: {
-                    select: {
-                        tag:true
-                    },
                     orderBy: {
-                        tag: {
-                            name: 'asc'
-                        }
+                        name: 'asc'
                     }
                 },
                 genres: {
-                    select: {
-                        genre: true
-                    },
                     orderBy: {
-                        genre: {
-                            name: 'asc'
-                        }
+                         name: 'asc'
+                    }
+                },
+                status: {
+                    select: {
+                        id: true,
+                        name: true
                     }
                 }
             },

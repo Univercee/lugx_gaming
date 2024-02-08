@@ -1,4 +1,4 @@
-import { Game, Genre, Tag } from "@prisma/client"
+import { Game, Genre, Status, Tag, User } from "@prisma/client"
 
 export type State = {
     errors?: {
@@ -12,18 +12,13 @@ export type State = {
 };
 
 export type GameWithRelations = Game & {
-    genres: {
-        genre: Genre
-    }[],
-    tags: {
-        tag: Tag
-    }[]
+    genres: Genre[],
+    tags: Tag[],
+    status: Status
 }
 
 export type GenreWithRelations = Genre & {
-    tags: {
-        tag: Tag
-    }[]
+    tags: Tag[]
 }
 
 

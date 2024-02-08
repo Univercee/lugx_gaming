@@ -6,11 +6,7 @@ export async function getGenres(): Promise<GenreWithRelations[]>{
     try {
         const genres = await db.genre.findMany({
             include:{
-                tags: {
-                    select: {
-                        tag:true
-                    }
-                }
+                tags: true
             },
             orderBy: {
                 name:"asc"
@@ -30,18 +26,12 @@ export async function getGenresByTag(tagName: string): Promise<GenreWithRelation
             where:{
                 tags:{
                     some:{
-                        tag: {
-                            name: tagName
-                        }
+                        name: tagName
                     }
                 }
             },
             include:{
-                tags: {
-                    select: {
-                        tag:true
-                    }
-                }
+                tags: true
             },
             orderBy: {
                 name:"asc"

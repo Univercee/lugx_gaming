@@ -1,28 +1,31 @@
-
-import { getGamesByUserId } from "@/data/game";
-import ProductCard from "./product-card";
-import { Suspense, useEffect, useState } from "react";
 import { GameWithRelations } from "@/lib/definitions";
 
+export function ProductsByUser({games}: {games: GameWithRelations[]}){
 
-export async function ProductsByUser({userId}: {userId: string}){
-    // const [games, setGames] = useState([] as GameWithRelations[]);
-    // useEffect(()=>{
-    //     console.log('use effect');
-        
-    //     getGamesByUserId(userId).then((data)=>{
-    //         setGames(data)
-    //     })
-    // }, []);
-    console.log('start loading');
-    
-    const games = await getGamesByUserId(userId);
-    console.log('end loading');
     return (
-        <div className="grid gap-8 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1">
-            {games.map(game=>(
-                <ProductCard key={game.id} data={game}></ProductCard>
-            ))}
-        </div>
+        <table className="border dashboard-products">
+            <thead>
+                <tr>
+                    <th className="text-start">Name</th>
+                    <th className="text-start">Price</th>
+                    <th className="text-start">Status</th>
+                    <th className="text-start">Active</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {games.map((game)=>(
+                    <tr key={game.id}>
+                        <td>{game.name}</td>
+                        <td className="text-center">{game.price}$</td>
+                        <td className="text-center">{game.status.name}</td>
+                        <td className="text-center"><input type="checkbox" defaultChecked={game.isActive}/></td>
+                        <td className="text-start">Edit</td>
+                        <td className="text-start">Delete</td>
+                    </tr>
+                ))}
+            </tbody>
+        </table>
     )
 }

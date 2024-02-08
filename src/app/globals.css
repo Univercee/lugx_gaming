@@ -207,6 +207,15 @@ input[type=number] {
 }
 
 
+.dashboard-products table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+.dashboard-products th, td {
+    padding: 15px;
+}
+
+
 
 @media (min-width: 1024px) {
     .info::after {

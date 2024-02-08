@@ -50,16 +50,16 @@ export default async function Page({params}: { params: {id: string}}) {
                 <div className="flex gap-8">
                   <p className="text-gray-500">Genres: </p>
                   <div className="flex gap-4">
-                    {game!.genres.map((el)=>(
-                      <Link className="text-primary hover:underline" href={{pathname: "/shop", query: {genre: el.genre.name}}}>{el.genre.name}</Link>
+                    {game!.genres.map((genre)=>(
+                      <Link className="text-primary hover:underline" href={{pathname: "/shop", query: {genre: genre.name}}}>{genre.name}</Link>
                     ))}
                   </div>
                 </div>
                 <div className="flex gap-8">
                   <p className="text-gray-500">Tags: </p>
                   <div className="flex gap-4">
-                    {game!.tags.map((el)=>(
-                      <Link className="text-primary hover:underline" href={{pathname: "/shop", query: {tag: el.tag.name}}}>{el.tag.name}</Link>
+                    {game!.tags.map((tag)=>(
+                      <Link className="text-primary hover:underline" href={{pathname: "/shop", query: {tag: tag.name}}}>{tag.name}</Link>
                     ))}
                   </div>
                 </div>
