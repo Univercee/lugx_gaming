@@ -11,7 +11,7 @@ export default async function Layout({
   return (
     <div className="min-h-screen flex flex-col">
         <BreadcrumbsHeader title="Dashboard"></BreadcrumbsHeader>
-        <main className="wrapper grow flex py-12">
+        <main className="wrapper grow flex py-12 gap-8">
           <DashboardNav></DashboardNav>
           {children}
         </main>

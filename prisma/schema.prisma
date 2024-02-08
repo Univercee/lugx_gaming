@@ -95,8 +95,8 @@ model Game {
     statusId String
     createdBy User @relation(fields: [userId], references: [id])
     userId String
-    genres GamesOnGenres[]
-    tags GamesOnTags[]
+    genres Genre[]
+    tags Tag[]
 }
 
 model Status {
@@ -109,40 +109,14 @@ model Genre {
     id String @id @default(uuid())
     name String @unique
     image String
-    games GamesOnGenres[]
-    tags GenresOnTags[]
+    games Game[]
+    tags Tag[]
 }
 
 model Tag {
     id String @id @default(uuid())
     name String @unique
-    games GamesOnTags[]
-    genres GenresOnTags[]
+    games Game[]
+    genres Genre[]
 }
 
-model GamesOnGenres {
-  game      Game     @relation(fields: [gameId], references: [id])
-  gameId    String 
-  genre     Genre    @relation(fields: [genreId], references: [id])
-  genreId   String
-
-  @@id([gameId, genreId])
-}
-
-model GamesOnTags {
-  game    Game     @relation(fields: [gameId], references: [id])
-  gameId  String
-  tag     Tag      @relation(fields: [tagId], references: [id])
-  tagId   String
-
-  @@id([gameId, tagId])
-}
-
-model GenresOnTags {
-  genre     Genre   @relation(fields: [genreId], references: [id])
-  genreId   String
-  tag       Tag     @relation(fields: [tagId], references: [id])
-  tagId     String
-
-  @@id([genreId, tagId])
-}

@@ -15,7 +15,7 @@ export default function ProductCard({data}: {data: GameWithRelations}) {
                 <span>{el.tag.name}{(i<data.tags.length-1)?<span className="text-slate-500 font-light"> | </span>:""}</span>
               )))}</p> */}
               <div className="self-start">
-                <p className="flex text-slate-500">{data.genres.map((el=>(el.genre.name))).join(" | ")}</p>
+                <p className="flex text-slate-500">{data.genres.map((genre=>(genre.name))).join(" | ")}</p>
                 <p className="product-card-title font-semibold text-lg w-52">{data.name}</p>
               </div>
           </div>

@@ -1,15 +1,20 @@
+import { Status, Tag, User, UserRole } from '@prisma/client';
 import bcrypt from 'bcryptjs';
-export const users = [
+import { GameWithRelations, GenreWithRelations } from './definitions';
+export const users: User[] = [
     {
         id: "2349a680-64fc-4d01-9169-b23eee3aecc4",
         name: "admin",
         image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg",
         email: "user@nextmail.com",
-        password: await bcrypt.hash("123456", 10)
+        password: await bcrypt.hash("123456", 10),
+        emailVerified: null,
+        isTwoFactorEnabled: false,
+        role: UserRole.USER
     }
 ]
 
-export const statuses = [
+export const statuses: Status[] = [
     {
         id: "9d82adee-2d04-4b70-9364-5004bc08fe72",
         name: "Approved",
@@ -24,7 +29,7 @@ export const statuses = [
     }
 ]
 
-export const tags = [
+export const tags: Tag[] = [
     {
         id: "57e61950-e865-4a77-a550-498a95351a89",
         name: "Trending",
@@ -39,7 +44,7 @@ export const tags = [
     }
 ]
 
-export const genres = [
+export const genres: GenreWithRelations[] = [
     {
         id: "9637fdca-8b4d-454b-9b4d-c2e08916b517",
         name: "Action",
@@ -91,7 +96,7 @@ export const genres = [
 ]
 
 
-export const games  = [
+export const games: GameWithRelations[]  = [
     {
         id: "5b870e87-b128-4f1f-bf70-e26c51b08bf3",
         name: "Assassin's Creed II",
@@ -103,8 +108,9 @@ export const games  = [
         genres: [genres[0], genres[1]],
         image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg",
         isActive: true,
-        status: statuses[0],
-        createdBy: users[0]
+        statusId: statuses[0].id,
+        userId: users[0].id,
+        status: statuses[0]
     },
     {
         id: "46ecf095-e261-47fa-9608-a81d39d019ee",
@@ -117,8 +123,9 @@ export const games  = [
         tags: [],
         image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg",
         isActive: true,
-        status: statuses[0],
-        createdBy: users[0]
+        statusId: statuses[0].id,
+        userId: users[0].id,
+        status: statuses[0]
     },
     {
         id: "deabcf92-68b1-40ae-b284-331b8698c10d",
@@ -138,8 +145,9 @@ export const games  = [
         tags: [tags[1], tags[2]],
         image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg",
         isActive: true,
-        status: statuses[0],
-        createdBy: users[0]
+        statusId: statuses[0].id,
+        userId: users[0].id,
+        status: statuses[0]
     },
     {
         id: "41a6ada6-6d01-4609-8047-d68dfb3eacd5",
@@ -152,8 +160,9 @@ export const games  = [
         tags: [],
         image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg",
         isActive: true,
-        status: statuses[0],
-        createdBy: users[0]
+        statusId: statuses[0].id,
+        userId: users[0].id,
+        status: statuses[0]
     },
     {
         id: "7437aed6-39b4-4bad-9bbd-cbb66670fe26",
@@ -164,8 +173,9 @@ export const games  = [
         tags: [tags[0], tags[1], tags[2]],
         image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg",
         isActive: true,
-        status: statuses[0],
-        createdBy: users[0]
+        statusId: statuses[0].id,
+        userId: users[0].id,
+        status: statuses[0]
     },
     {
         id: "4b53f840-b3b8-4e79-b88b-193e50f666b6",
@@ -177,8 +187,9 @@ export const games  = [
         tags: [tags[2]],
         image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg",
         isActive: true,
-        status: statuses[0],
-        createdBy: users[0]
+        statusId: statuses[0].id,
+        userId: users[0].id,
+        status: statuses[0]
     },
     {
         id: "67c73b70-939e-467b-be95-ec1c53eb47d6",
@@ -189,8 +200,9 @@ export const games  = [
         price: 15.37,
         image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg",
         isActive: true,
-        status: statuses[0],
-        createdBy: users[0]
+        statusId: statuses[0].id,
+        userId: users[0].id,
+        status: statuses[0]
     }
 ]
 
