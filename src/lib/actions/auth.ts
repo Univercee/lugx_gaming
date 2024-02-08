@@ -28,8 +28,6 @@ export async function login(prevState: State, formData: FormData): Promise<State
         code: formData.get('code')||undefined
     });
     
-    console.log(validatedFields);
-    
     if(!validatedFields.success){
         return {
             error: "Invalid fields!",
@@ -42,6 +40,12 @@ export async function login(prevState: State, formData: FormData): Promise<State
     if(!existingUser || !existingUser.email || !existingUser.password){
         return {error: "Email does not exist!"};
     }
+    
+    const passwordMatch = await bcrypt.compare(password, existingUser.password);
+    if(!passwordMatch){
+        return {error:'Invalid credentials.'};
+    }
+
     if(!existingUser.emailVerified){
         const verificationToken = await generateVerificationToken(existingUser.email);
         await sendVerificationEmail(verificationToken.email, verificationToken.token);
