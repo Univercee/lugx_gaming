@@ -12,16 +12,16 @@ export function LoginSocials(){
 
     return (
         <div className="flex flex-col gap-2 w-full">
-            <button className="border rounded-xl p-3 flex justify-center bg-white hover:bg-white/50" onClick={()=>{
+            <div className="border cursor-pointer rounded-xl p-3 flex justify-center bg-white hover:bg-white/50" onClick={()=>{
                 onClick("github")
             }}>
                 <FaGithub className="h-5 w-5"></FaGithub>
-            </button>
-            <button className="border rounded-xl p-3 flex justify-center bg-white hover:bg-white/50" onClick={()=>{
+            </div>
+            <div className="border cursor-pointer rounded-xl p-3 flex justify-center bg-white hover:bg-white/50" onClick={()=>{
                 onClick("google")
             }}>
                 <FaGoogle className="h-5 w-5"></FaGoogle>
-            </button>
+            </div>
         </div>
     )
 }
