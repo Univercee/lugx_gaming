@@ -8,7 +8,7 @@ import { db } from "../db";
 import { generateTwoFactorToken, generateVerificationToken } from "./tokens";
 import { sendTwoFactorEmail, sendVerificationEmail } from "./send-mails";
 import { signIn, signOut } from "@/auth";
-import { State } from "../definitions";
+import { LoginState, State } from "../definitions";
 import { getTwoFactorTokenByEmail } from "@/data/two-factor-token";
 import { getTwoFactorConfirmationByUserId } from "@/data/two-factor-confirmation";
 import { cookies } from "next/headers";
@@ -21,7 +21,7 @@ export async function logout(){
 }
 
 //
-export async function login(prevState: State, formData: FormData): Promise<State> {
+export async function login(prevState: LoginState, formData: FormData): Promise<LoginState> {
     const validatedFields  = LoginSchema.safeParse({
         email: formData.get('email'),
         password: formData.get('password'),

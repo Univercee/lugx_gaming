@@ -1,4 +1,4 @@
-import { Status, Tag, User, UserRole } from '@prisma/client';
+import { GameStatus, Tag, User, UserRole } from '@prisma/client';
 import bcrypt from 'bcryptjs';
 import { GameWithRelations, GenreWithRelations } from './definitions';
 export const users: User[] = [
@@ -11,21 +11,6 @@ export const users: User[] = [
         emailVerified: null,
         isTwoFactorEnabled: false,
         role: UserRole.USER
-    }
-]
-
-export const statuses: Status[] = [
-    {
-        id: "9d82adee-2d04-4b70-9364-5004bc08fe72",
-        name: "Approved",
-    },
-    {
-        id: "663f323f-1f87-4119-8a93-680d809ebc9e",
-        name: "Dislined",
-    },
-    {
-        id: "8a4202a7-97bf-4384-93ca-ce5f54ad7511",
-        name: "Pending",
     }
 ]
 
@@ -108,9 +93,8 @@ export const games: GameWithRelations[]  = [
         genres: [genres[0], genres[1]],
         image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg",
         isActive: true,
-        statusId: statuses[0].id,
         userId: users[0].id,
-        status: statuses[0]
+        status: GameStatus.APPROVED
     },
     {
         id: "46ecf095-e261-47fa-9608-a81d39d019ee",
@@ -123,9 +107,8 @@ export const games: GameWithRelations[]  = [
         tags: [],
         image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg",
         isActive: true,
-        statusId: statuses[0].id,
         userId: users[0].id,
-        status: statuses[0]
+        status: GameStatus.APPROVED
     },
     {
         id: "deabcf92-68b1-40ae-b284-331b8698c10d",
@@ -145,9 +128,8 @@ export const games: GameWithRelations[]  = [
         tags: [tags[1], tags[2]],
         image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg",
         isActive: true,
-        statusId: statuses[0].id,
         userId: users[0].id,
-        status: statuses[0]
+        status: GameStatus.APPROVED
     },
     {
         id: "41a6ada6-6d01-4609-8047-d68dfb3eacd5",
@@ -160,9 +142,8 @@ export const games: GameWithRelations[]  = [
         tags: [],
         image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg",
         isActive: true,
-        statusId: statuses[0].id,
         userId: users[0].id,
-        status: statuses[0]
+        status: GameStatus.APPROVED
     },
     {
         id: "7437aed6-39b4-4bad-9bbd-cbb66670fe26",
@@ -173,9 +154,8 @@ export const games: GameWithRelations[]  = [
         tags: [tags[0], tags[1], tags[2]],
         image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg",
         isActive: true,
-        statusId: statuses[0].id,
         userId: users[0].id,
-        status: statuses[0]
+        status: GameStatus.APPROVED
     },
     {
         id: "4b53f840-b3b8-4e79-b88b-193e50f666b6",
@@ -187,9 +167,8 @@ export const games: GameWithRelations[]  = [
         tags: [tags[2]],
         image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg",
         isActive: true,
-        statusId: statuses[0].id,
         userId: users[0].id,
-        status: statuses[0]
+        status: GameStatus.APPROVED
     },
     {
         id: "67c73b70-939e-467b-be95-ec1c53eb47d6",
@@ -200,9 +179,8 @@ export const games: GameWithRelations[]  = [
         price: 15.37,
         image: "https://res.cloudinary.com/dvmssvqsi/image/upload/v1706382441/trending-01_bsklff.jpg",
         isActive: true,
-        statusId: statuses[0].id,
         userId: users[0].id,
-        status: statuses[0]
+        status: GameStatus.APPROVED
     }
 ]
 

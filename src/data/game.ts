@@ -33,12 +33,6 @@ export async function getFilteredGames(params: FilterParams): Promise<GameWithRe
                         orderBy: {
                             name: 'asc'
                         }
-                    },
-                    status: {
-                        select: {
-                            id: true,
-                            name: true
-                        }
                     }
                 },
                 orderBy: {
@@ -64,12 +58,6 @@ export async function getFilteredGames(params: FilterParams): Promise<GameWithRe
                     genres: {
                         orderBy: {
                             name: 'asc'
-                        }
-                    },
-                    status: {
-                        select: {
-                            id: true,
-                            name: true
                         }
                     }
                 },
@@ -101,12 +89,6 @@ export async function getGameById(id: string): Promise<GameWithRelations|null>{
                 genres: {
                     orderBy: {
                         name: 'asc'
-                    }
-                },
-                status: {
-                    select: {
-                        id: true,
-                        name: true
                     }
                 }
             },
@@ -141,12 +123,6 @@ export async function getGamesByUserId(userId: string): Promise<GameWithRelation
                 genres: {
                     orderBy: {
                          name: 'asc'
-                    }
-                },
-                status: {
-                    select: {
-                        id: true,
-                        name: true
                     }
                 }
             },

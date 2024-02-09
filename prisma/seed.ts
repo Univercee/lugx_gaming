@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client';
-import { users, games, genres, tags, statuses } from '../src/lib/placeholderdata.ts';
+import { users, games, genres, tags } from '../src/lib/placeholderdata.ts';
 const prisma = new PrismaClient();
 
 async function seedUsers() {
@@ -10,18 +10,6 @@ async function seedUsers() {
       },
       update:{},
       create:user
-    })
-  });
-};
-
-async function seedStatuses() {
-  statuses.forEach(async (status)=>{
-    await prisma.status.upsert({
-      where: {
-        id: status.id
-      },
-      update:{},
-      create:status
     })
   });
 };
@@ -81,11 +69,6 @@ async function seedGames() {
           connect: {
             id: game.userId
           }
-        },
-        status: {
-          connect: {
-            id: game.statusId
-          }
         }
       }
     })
@@ -95,7 +78,6 @@ async function seedGames() {
 async function main() {
 
   await seedUsers();
-  await seedStatuses();
   await seedTags();
   await seedGenres();
   await seedGames();

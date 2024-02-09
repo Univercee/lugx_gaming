@@ -1,4 +1,4 @@
-import { Game, Genre, Status, Tag, User } from "@prisma/client"
+import { Game, Genre, Tag, User } from "@prisma/client"
 
 export type State = {
     errors?: {
@@ -8,13 +8,14 @@ export type State = {
     },
     message?: string | null,
     error?: string | null,
-    twoFactor?: boolean
+    
 };
+
+export type LoginState = State & {twoFactor?: boolean};
 
 export type GameWithRelations = Game & {
     genres: Genre[],
-    tags: Tag[],
-    status: Status
+    tags: Tag[]
 }
 
 export type GenreWithRelations = Genre & {

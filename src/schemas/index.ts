@@ -38,17 +38,6 @@ export const NewPasswordSchema = z.object({
 export const ResetPasswordSchema = LoginSchema.omit({password: true, code: true});
 
 
-export const GameCreateSchema = z.object({
-    email: z.string().email({
-        message: "Email is required",
-    }),
-    password: z.string().min(1, {
-        message: "Password is required",
-    }),
-    code: z.optional(z.string().length(6))
-})
-
-
 export const GameUpdateSchema = z.object({
     id: z.string().email({
         message: "Email is required",
@@ -77,3 +66,5 @@ export const GameUpdateSchema = z.object({
         invalid_type_error: "Invalid tags"
     })
 })
+
+export const GameCreateSchema = GameUpdateSchema.omit({id: true});
