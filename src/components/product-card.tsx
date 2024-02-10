@@ -8,7 +8,7 @@ export default function ProductCard({data}: {data: GameWithRelations}) {
     return (
       <Link href={`/shop/${data.id}`} className="animated product-card relative bg-muted rounded-3xl cursor-pointer">
         <div>
-          <img src={data.image} alt="Game image" className="rounded-3xl w-full" />
+          <img src={data.image} alt="Game image" className="rounded-3xl w-full object-cover" style={{aspectRatio: "16/11"}}/>
           <p className="banner-price">{data.price}$</p>
           <div className="flex flex-col jus gap-4 p-8 mb-5">
               {/* <p className="text-accent font-semibold h-4">{data.tags.map<React.ReactNode>(((el,i)=>(
