@@ -2,9 +2,7 @@ import { Game, Genre, Tag, User } from "@prisma/client"
 
 export type State = {
     errors?: {
-        email?: string[],
-        password?: string[],
-        name?: string[]
+        [key: string]: any
     },
     message?: string | null,
     error?: string | null,

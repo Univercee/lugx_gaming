@@ -1,6 +1,6 @@
 'use server'
 import { auth } from "@/auth";
-import { ProductsByUser } from "@/components/products-by-user";
+import { ProductsByUser } from "@/components/dashboard/products-by-user";
 import { getGamesByUserId } from "@/data/game";
 
 export default async function Page() {

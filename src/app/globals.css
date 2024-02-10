@@ -137,7 +137,11 @@
 }
 
 .button-accented {
-    @apply animated bg-accent hover:bg-primary px-5 py-3 rounded-3xl text-white uppercase text-sm font-semibold;
+    @apply animated bg-accent hover:bg-danger/80 px-5 py-3 rounded-3xl text-white uppercase text-sm font-semibold;
+}
+
+.button-success {
+    @apply animated bg-success hover:bg-success/80 px-5 py-3 rounded-3xl text-white uppercase text-sm font-semibold;
 }
 
 .button-switcher {

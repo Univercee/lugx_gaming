@@ -39,23 +39,21 @@ export const ResetPasswordSchema = LoginSchema.omit({password: true, code: true}
 
 
 export const GameUpdateSchema = z.object({
-    id: z.string().email({
-        message: "Email is required",
+    id: z.string().min(1,{
+        message: "Id is missing",
     }),
-    name: z.string().email({
-        message: "Email is required",
+    name: z.string({
+        required_error: "Name is required"
     }),
-    price: z.number({
-            required_error: "Price is required",
-            invalid_type_error: "Price must be an integer"
-        }),
+    price: z.coerce.number().gt(0, { message: 'Please, enter a price greater then 0'}),
     description: z.string({
         required_error: "Description is required"
     }),
-    image: z.any()
-        .refine((files) => files?.[0]?.size <= MAX_FILE_SIZE, `Max image size is 5MB.`)
+    image: z.instanceof(File)
+        .refine((file) => file instanceof File, `Only files allowed`)
+        .refine((file) => file.size <= MAX_FILE_SIZE, `Max image size is 5MB.`)
         .refine(
-        (files) => ACCEPTED_IMAGE_TYPES.includes(files?.[0]?.type),
+        (file) => ACCEPTED_IMAGE_TYPES.includes(file.type),
         "Only .jpg, .jpeg, .png and .webp formats are supported."
         ),
     genresId: z
@@ -66,5 +64,13 @@ export const GameUpdateSchema = z.object({
         invalid_type_error: "Invalid tags"
     })
 })
+
+export const UpdateGameIsActiveSchema = z.object({
+    id: z.string().min(1,{
+        message: "Id is missing",
+    }),
+    isActive: z.string().toLowerCase().transform((x) => x === 'true').pipe(z.boolean())
+})
+
 
 export const GameCreateSchema = GameUpdateSchema.omit({id: true});
