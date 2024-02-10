@@ -73,8 +73,6 @@ export async function getFilteredGames(params: FilterParams): Promise<GameWithRe
   }
   
 export async function getGameById(id: string): Promise<GameWithRelations|null>{
-    try {
-      
       try {
         const game = await db.game.findFirst({
             where:{
@@ -102,10 +100,6 @@ export async function getGameById(id: string): Promise<GameWithRelations|null>{
           console.error('Database Error:', error);
           throw new Error('Failed to fetch GamesById.');
       }
-    } catch (error) {
-        console.error('Database Error:', error);
-        throw new Error('Failed to fetch GameById.');
-    }
 }
 
 export async function getGamesByUserId(userId: string): Promise<GameWithRelations[]>{
