@@ -55,7 +55,6 @@ export async function updateGame(prevState: State, data: FormData): Promise<Stat
     if(game.userId !== user.id){
         return {error: "Unauthorized"};
     }
-    console.log(data.get("image"));
     
     const validatedFields = GameUpdateSchema.safeParse({
         id: data.get("id"),
@@ -67,8 +66,6 @@ export async function updateGame(prevState: State, data: FormData): Promise<Stat
         tagsId: data.getAll("tagsId")
     });
     if(!validatedFields.success){
-        console.log(validatedFields.error);
-        
         return {
             error: "Invalid fields!",
             errors: validatedFields.error.flatten().fieldErrors
