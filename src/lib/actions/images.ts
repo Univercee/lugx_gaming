@@ -1,7 +1,6 @@
 'use server'
 import { v2 as cloudinary } from 'cloudinary';
-import path from 'path';
-import fs from 'fs';
+import fs from 'node:fs';
 
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_NAME, 
