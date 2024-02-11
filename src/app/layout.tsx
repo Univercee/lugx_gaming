@@ -32,6 +32,7 @@ export default async function RootLayout({
             </div>
           </div>
           <GoogleAnalytics gaId="G-9N358EQ6TL"></GoogleAnalytics>
+          <meta name="yandex-verification" content="1cb6f17cf3ca5e67" />
         </body>
       </html>
   );
