@@ -131,3 +131,18 @@ export async function getGamesByUserId(userId: string): Promise<GameWithRelation
           throw new Error('Failed to fetch GamesById.');
       }
 }
+
+export async function getGamesIds(): Promise<{id: string}[]>{
+    try {
+        const games = await db.game.findMany({
+            select:{
+                id: true
+            }
+        });
+        
+        return games;
+      } catch (error) {
+          console.error('Database Error:', error);
+          throw new Error('Failed to fetch GamesIDs.');
+      }
+}

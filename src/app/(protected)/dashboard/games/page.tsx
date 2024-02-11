@@ -1,4 +1,3 @@
-'use server'
 import { auth } from "@/auth";
 import { ProductsByUser } from "@/components/dashboard/products-by-user";
 import { getGamesByUserId } from "@/data/game";

@@ -1,6 +1,5 @@
-'use server'
 import BreadcrumbsHeader from "@/components/layout/breadcrumbs-header";
-import { getGameById } from "@/data/game";
+import { getGameById, getGamesIds } from "@/data/game";
 import { faBagShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Metadata, ResolvingMetadata } from "next";
@@ -19,6 +18,11 @@ export async function generateMetadata(
     title: game?.name,
     description: game?.description
   }
+}
+
+export async function generateStaticParams(){
+  const ids = await getGamesIds();
+  return ids;
 }
 
 export default async function Page({params}: { params: {id: string}}) {
